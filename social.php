@@ -37,9 +37,6 @@ include 'facebooklibs/auth.php';
     <?php if ($user): ?>
       <h3>You are using facebook with Mash'D</h3>
       <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
-
-      <h3>Your User Object (/me)</h3>
-      <pre><?php print_r($user_profile); ?></pre>
     <?php endif ?>
     <!--End facebook stuff -->
 
@@ -47,9 +44,6 @@ include 'facebooklibs/auth.php';
     <p><a href="#">Instagram Login</a></p>
     <p><a href="#">Vine Login</a></p>
     <p><a href="#">Reddit Login</a></p>
-
-    <h3>PHP Session</h3>
-    <pre><?php print_r($_SESSION); ?></pre>
 
   </body>
 </html>

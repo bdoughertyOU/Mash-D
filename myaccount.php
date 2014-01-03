@@ -31,7 +31,7 @@ you want to show myaccount options. This is only visible to logged in users
 if (isset($_SESSION['user_id'])) {?>
 <div class="myaccount">
   <p><strong>My Account</strong></p>
-  <a href="myaccount.php">My Account</a><br>
+  <a href="####">#####</a><br>
   <a href="mysettings.php">Settings</a><br>
     <a href="logout.php">Logout </a><br>
      <a href="social.php">Social Accounts</a>
@@ -56,8 +56,6 @@ if (checkAdmin()) {
 	  ?>
       
       <p>
-        <h3>PHP Session</h3>
-    <pre><?php print_r($_SESSION); ?></pre>
   
   <!--/***********************************************facebook stuff*****/-->    
 
@@ -92,7 +90,16 @@ if($user_id) {
   /////////////////////////////
   /////////////////////
   ///////////////////////// calling api call for users feed, printing out to mashd ui
-        $ret_obj = $facebook->api('/me/home', 'GET');
+  function in_array_r($needle, $haystack, $strict = false) {
+    foreach ($haystack as $item) {
+        if (($strict ? $item === $needle : $item == $needle) || (is_array($item) && in_array_r($needle, $item, $strict))) {
+            return true;
+        }
+    }
+
+    return false;
+}
+        $ret_obj = $facebook->api('/me/home?limit=10','GET');
         echo count($ret_obj['data']); // this is uneccesary just for testing
         
         $i=0;
@@ -102,15 +109,26 @@ if($user_id) {
           
           $data = $ret_obj['data'][$i];
 
-          echo "<br/> -----------<span class=\"fbname\">" . 
-          $data[from][name] . 
-          "</span> at " . 
-          $data[place][name] . #need conditional for placing the "at" in for location.
-          "<br/>" . 
-          $data[message] . 
-          "<br/>" . 
-          $data[picture] . ##look into how to upload photos
-          "<br/>";
+          echo "<br/> -----------<span class=\"fbname\">" . $data['from']['name'];
+          
+          if (in_array('place', $data)){
+          echo "</span> at " . $data['place']['name'];
+          }
+          echo "<br/>";
+          
+          if (in_array('message', $data))
+          {
+          echo $data['message'] . "<br/>";
+          }
+          ##figure out how to loop through because if the post has multiple photos i
+          ##it will only upload one
+          if(in_array_r('picture', $data)){
+          $urlofpic =  $data['picture'];
+          $name = basename($urlofpic);
+          file_put_contents("images/$name", file_get_contents($urlofpic));
+          
+          echo  "<img src='images/".$name."'/><br/>";
+          }
          
           $i++;
         }
