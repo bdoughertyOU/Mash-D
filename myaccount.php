@@ -99,36 +99,59 @@ if($user_id) {
 
     return false;
 }
-        $ret_obj = $facebook->api('/me/home?limit=10','GET');
+        $ret_obj = $facebook->api('/me/home?access_token=&limit=20&untill=','GET');
         echo count($ret_obj['data']); // this is uneccesary just for testing
-        
         $i=0;
         
         $count = count($ret_obj['data']);
         while($i < $count){
           
           $data = $ret_obj['data'][$i];
+          $aname = $data['from']['id'];
+          $usr_post_pic = $facebook->api('/' . $aname . '?fields=picture','GET');
+          $pic = $usr_post_pic['picture']['data']['url'];
+          echo "<img src='$pic'/>";
+          echo "<br/>";
+          if (empty($data['story'])){
+              echo $data['from']['name'];
+            }else{
+              echo $data['story'];
+            }
+          if (isset($data['to'])){
+              echo " to " . $data['to']['data']['0']['name'];
+              }          
+          echo "<br/>";
+          if (isset($data['message'])){
+              echo $data['message'];
+            }
+          echo "<br/>";
+         if (isset($data['picture'])){
+            ##working on this regex #################
+            $big_num = preg_replace('/.[^0-9,_]/', '', $data['picture']);
+            $imglink = 'https://scontent-b-pao.xx.fbcdn.net/hphotos-prn1/' .$big_num. '_n.jpg';
+            echo "<img src='$imglink'/>";
+          }
+          echo "<br/>";
+          print_r($data);
 
-          echo "<br/> -----------<span class=\"fbname\">" . $data['from']['name'];
+          echo "<br/>";
+         /*** echo "<br/> -----------<span class=\"fbname\">" . $data['from']['name'];
           
           if (in_array('place', $data)){
           echo "</span> at " . $data['place']['name'];
           }
           echo "<br/>";
           
-          if (in_array('message', $data))
+          if (in_array_r('message', $data) && (in_array_r('message', $data)) != " ")
           {
           echo $data['message'] . "<br/>";
           }
           ##figure out how to loop through because if the post has multiple photos i
           ##it will only upload one
-          if(in_array_r('picture', $data)){
-          $urlofpic =  $data['picture'];
-          $name = basename($urlofpic);
-          file_put_contents("images/$name", file_get_contents($urlofpic));
-          
-          echo  "<img src='images/".$name."'/><br/>";
-          }
+          if(in_array_r('picture', $data) && (in_array_r('picture', $data)) != " "){
+          $urlofpic =  $data['picture'];          
+          echo  "<img src='images/".$urlofpic."'/><br/>";
+          }**/
          
           $i++;
         }

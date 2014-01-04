@@ -1,0 +1,10 @@
+
+
+
+####header name and title if any
+if (empty($data['story']))
+	echo $data['from']['name']
+else
+	echo $data['story']
+
+shared links do not show up in json array for me/home

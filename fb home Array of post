@@ -1,76 +1,81 @@
 Array ( 
-
-[data] => Array (
-	 [0] => Array ( 
-	 	[id] => 1406599458_10203025853393056 
-	 	[from] => Array (
-	 		 [name] => Rachel Abernathy 
-	 		 [id] => 1406599458 
-	 		 	) 
-	 	[message] => Snorkeled the Great Barrier Reef today! 
-	 	[picture] => https://fbcdn-photos-g-a.akamaihd.net/hphotos-ak-ash3/1538621_10203025852433032_1336406694_s.jpg 
-	 	 [link] => https://www.facebook.com/photo.php?fbid=10203025852433032&set=a.10202964742905332.1073741831.1406599458&type=1&relevant_count=1 
-	 	 [name] => Gooning It Up In Oz 
-	 	 [icon] => https://fbstatic-a.akamaihd.net/rsrc.php/v2/yz/r/StEh3RhPvjk.gif 
-	 	[actions] => Array ( 
-	 		 			[0] => Array ( 
-	 		 				[name] => Comment 
-	 		 				[link] => https://www.facebook.com/1406599458/posts/10203025853393056 
-	 		 				) 
-	 		 			[1] => Array ( 
-	 		 				[name] => Like 
-	 		 				[link] => https://www.facebook.com/1406599458/posts/10203025853393056 
-	 		 				) 
-	 		 	) 
-	 		 [privacy] => Array ( 
-	 		 	[value] => 
-	 		 	) 
-	 		 [place] => Array ( 
-	 		 	[id] => 204015522971556 
-	 		 	[name] => Cairns Australia 
-	 		 	
-	 		 		[location] => Array ( 
-	 		 				[street] => 100 Abbott Street 
-	 		 				[city] => Cairns 
-	 		 				[state] => QLD 
-	 		 				[country] => Australia 
-	 		 				[zip] => 4870 
-	 		 				[latitude] => -16.9238627264 
-	 		 				[longitude] => 145.775477204 
-	 		 				) 
-	 		 	) 
-	 		 
-	 		 [type] => photo 
-	 		 
-	 		 [status_type] => added_photos 
-	 		 	[object_id] => 10203025852433032 
-	 		 	[application] => Array (
-	 		 		 [name] => Facebook for iPhone 
-	 		 		 [namespace] => fbiphone 
-	 		 		 [id] => 6628568379 
-	 		 		 	) 
-	 		 	[created_time] => 2013-12-29T07:53:55+0000 
-	 		 	[updated_time] => 2013-12-29T07:53:55+0000 
-	 		 
-	 		 [likes] => Array ( 
-	 		 		[data] => Array ( 
-	 		 			[0] => Array ( 
-	 		 				[id] => 1253065603 
-	 		 				[name] => Bryce Wettstein 
-	 		 					) 
-	 		 			[1] => Array ( 
-	 		 				[id] => 617577812 
-	 		 				[name] => Kevin Schmitz 
-	 		 					) 
-	 		 				) 
-	 		 		[paging] => Array ( 
-	 		 			[cursors] => Array ( 
-	 		 				[after] => NjE3NTc3ODEy 
-	 		 				[before] => MTI1MzA2NTYwMw== 
-	 		 				) 
-	 		 			) 
-	 		 		) 
-	 		 	) 
-
-	 ######## THIS IS THE NEXT POST ON THE USERS HOME UI #############
-	 [1] => Array ( [id] => 1825828222_10200342169636613 [from] => Array ( [name] => Gary Esquivel [id] => 1825828222 ) [message] => Surreal and the soundproviders [actions] => Array ( [0] => Array ( [name] => Comment [link] => https://www.facebook.com/1825828222/posts/10200342169636613 ) [1] => Array ( [name] => Like [link] => https://www.facebook.com/1825828222/posts/10200342169636613 ) ) [privacy] => Array ( [value] => ) [type] => status [status_type] => mobile_status_update [application] => Array ( [name] => Mobile [id] => 2915120374 ) [created_time] 
+[id] => 758339866_10203037340163280 
+[from] => 
+	Array ( 
+		[name] => Abraham Chavez 
+		[id] => 758339866 
+		  ) 
+[story] => Abraham Chavez was tagged in a video. 
+[story_tags] => Array ( 
+				[0] => Array ( 
+					[0] => Array ( 
+						[id] => 758339866 
+						[name] => Abraham Chavez 
+						[offset] => 0 
+						[length] => 14 
+						[type] => user 
+								  ) 
+				  			  ) 
+				  	   ) 
+[actions] => Array ( 
+			[0] => Array ( 
+				[name] => Comment 
+				[link] => https://www.facebook.com/758339866/posts/10203037340163280 
+						 ) 
+					) 
+[privacy] => Array ( 
+			[value] => 
+				   ) 
+[type] => status 
+[created_time] => 2014-01-04T01:27:04+0000 
+[updated_time] => 2014-01-04T01:27:04+0000 
+[likes] => Array ( 
+			[data] => Array ( 
+						[0] => Array ( 
+								[id] => 1364681560 
+								[name] => Yemina Lira
+									 ) 
+						[1] => Array ( 
+								[id] => 1460257143 
+								[name] => Israel W Maes
+									 ) 
+						[2] => Array ( 
+								[id] => 1481929673 
+								[name] => Brian Hernandez 
+									 )
+							) 
+			[paging] => Array ( 
+						[cursors] => Array ( 
+									[after] => MTIwNTEzNzIxNQ== 
+									[before] => MTM2NDY4MTU2MA== 
+											) 
+				   				)
+				 ) 
+[comments] => Array ( 
+			[data] => Array ( 
+						[0] => Array ( 
+									[id] => 10203037340163280_7311052 
+									[from] => Array ( 
+												[name] => Joel Cerda 
+												[id] => 1827191202 
+													) 
+									[message] => Great motivational video! 
+									[can_remove] => 
+									[created_time] => 2014-01-04T01:43:09+0000 
+									[like_count] => 1 
+									[user_likes] => 
+									) 
+						[1] => Array ( 
+									[id] => 10203037340163280_7311053 
+									[from] => Array ( 
+												[name] => Aaron Buckley 
+												[id] => 1205137215 
+													) 
+									[message] => Awesome Video! 
+									[can_remove] => 
+									[created_time] => 2014-01-04T01:43:15+0000 
+									[like_count] => 1 
+									[user_likes] => 
+									 ) 
+							) 
+			[paging] => Array ( [cursors] => Array ( [after] => Mg== [before] => MQ== ) ) ) ) 
