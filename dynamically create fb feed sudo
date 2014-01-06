@@ -7,4 +7,8 @@ if (empty($data['story']))
 else
 	echo $data['story']
 
-shared links do not show up in json array for me/home
+-shared links do not show up in json array for me/home
+-shared links with pictures
+-stuff posted via other apps
+-if you get current time using php(which is server side) does it get the time of the server location or browser location
+
