@@ -66,7 +66,6 @@ $response = json_decode($popular, true);
    }
 ?>
 
-<p class="footer"><a href="http://www.webdesignerwall.com/tutorials/css-decorative-gallery/">www.webdesignerwall.com/tutorials/css-decorative-gallery/</a></p>
 
 </body>
 </html>

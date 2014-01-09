@@ -17,7 +17,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 // require_once 'Zend/Http/Client.php';
-require_once 'CurlHttpClient.php';
+include 'CurlHttpClient.php';
 
 class Instagram {
 
@@ -156,12 +156,15 @@ class Instagram {
 
             if ($this->_oauthToken == null) {
                 $this->_setOauthToken();
+                
             }
 
             $this->_accessToken = json_decode($this->_oauthToken)->access_token;
+              
         }
 
         return $this->_accessToken;
+          
     }
 
     /**
@@ -174,9 +177,11 @@ class Instagram {
 
             if ($this->_oauthToken == null) {
                 $this->_setOauthToken();
+                var_dump(_OauthToken);
             }
 
             $this->_currentUser = json_decode($this->_oauthToken)->user;
+            var_dump(_OauthToken);
         }
 
         return $this->_currentUser;

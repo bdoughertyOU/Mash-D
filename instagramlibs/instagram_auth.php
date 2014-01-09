@@ -14,29 +14,28 @@
  * 
  *
  */
-include 'Instagram.php';
 
-/**
- * Configuration params, make sure to write exactly the ones
- * instagram provide you at http://instagr.am/developer/
- */
+include 'Instagram.php';
 $config = array(
         'client_id' => 'af0092092bd347f2948940ef30261dcc',
         'client_secret' => '12b2d103aa884b9c9a4bf377ad4cf279',
         'grant_type' => 'authorization_code',
-        'redirect_uri' => 'http://localhost/Mashd/Mash-D/social.php',
+        'redirect_uri' => 'http://localhost/Mashd/Mash-D/instagramlibs/instagram_callback.php',
      );
+
 
 /**
  * This is how a wrong response looks like
  * array(1) { ["InstagramOAuthToken"]=> string(89) "{"code": 400, "error_type": "OAuthException", "error_message": "No matching code found."}" }
  */
-session_start();
+
 if (isset($_SESSION['InstagramAccessToken']) && !empty($_SESSION['InstagramAccessToken'])) {
-    header('Location: callback.php');
+    header('Location: social.php');
     die();
 }else{
 
 // Instantiate the API handler object
 $instagram = new Instagram($config);
-$instagram_loginUrl = $instagram->openAuthorizationUrl();}
+$instagram_loginUrl = $instagram->getAuthorizationUrl();}
+
+?>

@@ -2,6 +2,7 @@
 include 'facebooklibs/auth.php';
 include 'instagramlibs/instagram_auth.php';
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,9 +23,8 @@ include 'instagramlibs/instagram_auth.php';
 </head>
   <body>
     <a href="myaccount.php">My Account</a>
-    
+    <pre><?php print_r($_SESSION); ?></pre>
     <!--facebook stuff -->
-    <h1>php-sdk</h1>
     <?php if ($user): ?>
       <a href="<?php echo $logoutUrl; ?>">Logout</a>
     <?php else: ?>
@@ -42,16 +42,15 @@ include 'instagramlibs/instagram_auth.php';
     <!--End facebook stuff -->
 
     <!--Instagram stuff -->
-    <?#php if (isset($_SESSION['InstagramAccessToken']) && !empty($_SESSION['InstagramAccessToken'])):?>
+    <?php if (isset($_SESSION['InstagramAccessToken']) && !empty($_SESSION['InstagramAccessToken'])):?>
       <h3>You are using Instagram with Mash'D</h3>
 
-    <?#php else: ?>
+    <?php else: ?>
       <div>
-        Login using OAuth 2.0 handled by the PHP SDK:
-       <a href="<?php #echo $instagram_loginUrl; ?>">Instagram Login</a>
+       <a href="<?php echo $instagram_loginUrl; ?>">Instagram Login</a>
         <strong><em>You are not Connected.</em></strong>
       </div>
-    <?#php endif ?>
+    <?php endif ?>
 
     <!--Instagram stuff  -->
 
