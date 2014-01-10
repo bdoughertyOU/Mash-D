@@ -15,19 +15,19 @@
  * under the License.
  */
 
-require_once "facebooklibs/src/base_insta.php";
+require_once "newig_baseclass.php";
 
 /**
  * Extends the BaseFacebook class with the intent of using
  * PHP sessions to store user ids and access tokens.
  */
-class Facebook extends BaseInstagram
+class Instagram extends BaseInstagram
 {
-  const INSTAGRAMSS_COOKIE_NAME = 'igss';
+  const IGSS_COOKIE_NAME = 'igss';
 
   // We can set this to a high number because the main session
   // expiration will trump this.
-  const INSTAGRAMSS_COOKIE_EXPIRE = 31556926; // 1 year
+  const IGSS_COOKIE_EXPIRE = 31556926; // 1 year
 
   // Stores the shared session ID if one is set.
   protected $sharedSessionID;
@@ -90,7 +90,7 @@ class Facebook extends BaseInstagram
     );
     $_COOKIE[$cookie_name] = $cookie_value;
     if (!headers_sent()) {
-      $expire = time() + self::INSTAGRAMSS_COOKIE_EXPIRE;
+      $expire = time() + self::IGSS_COOKIE_EXPIRE;
       setcookie($cookie_name, $cookie_value, $expire, '/', '.'.$base_domain);
     } else {
       // @codeCoverageIgnoreStart
@@ -159,7 +159,7 @@ class Facebook extends BaseInstagram
   }
 
   protected function getSharedSessionCookieName() {
-    return self::INSTAGRAMSSSS_COOKIE_NAME . '_' . $this->getAppId();
+    return self::FBSS_COOKIE_NAME . '_' . $this->getAppId();
   }
 
   protected function constructSessionVariableName($key) {
