@@ -1,6 +1,23 @@
 <?php
 include 'facebooklibs/auth.php';
 ?>
+<?php
+
+require 'instagramlibs/instagram.class.php';
+
+// initialize class
+$instagram = new Instagram(array(
+  'apiKey'      => 'af0092092bd347f2948940ef30261dcc',
+  'apiSecret'   => '12b2d103aa884b9c9a4bf377ad4cf279',
+  'apiCallback' => 'http://localhost/Mashd/Mash-D/myaccount.php' // must point to success.php
+));
+
+
+// create login URL
+$instagram_loginUrl = $instagram->getLoginUrl();
+
+?>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
