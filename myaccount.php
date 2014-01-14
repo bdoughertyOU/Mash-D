@@ -3,6 +3,59 @@ include 'dbc.php';
 page_protect();
 include 'facebooklibs/auth.php';
 
+/*
+ * Instagram PHP API
+ * 
+ * @link https://github.com/cosenary/Instagram-PHP-API
+ * @author Christian Metz
+ * @since 01.10.2013
+ */
+
+require_once 'instagramlibs/instagram.class.php';
+
+// initialize class
+$instagram = new Instagram(array(
+  'apiKey'      => 'af0092092bd347f2948940ef30261dcc',
+  'apiSecret'   => '12b2d103aa884b9c9a4bf377ad4cf279',
+  'apiCallback' => 'http://localhost/Mashd/Mash-D/myaccount.php' // must point to success.php
+));
+
+// receive OAuth code parameter
+$code = $_GET['code'];
+
+// check whether the user has granted access
+if (isset($_COOKIE['instagram'])) {
+
+  // receive OAuth token object
+    // store user access token
+  $instagram->setAccessToken($_COOKIE['instagram']);
+
+  // now you have access to all authenticated user methods
+  $result = $instagram->getUserMedia();
+
+}elseif (isset($code)) {
+
+  // receive OAuth token object
+  $data = $instagram->getOAuthToken($code);
+  $username = $username = $data->user->username;
+  
+  // store user access token
+  $instagram->setAccessToken($data);
+
+  // now you have access to all authenticated user methods
+  $result = $instagram->getUserMedia();
+
+} else {
+
+  // check whether an error occurred
+  if (isset($_GET['error'])) {
+    echo 'An error occurred: ' . $_GET['error_description'];
+  }
+
+}
+
+
+
 
 
 
@@ -62,50 +115,8 @@ if (checkAdmin()) {
 <!--#############################################################################-->  
 <!--###########################Instagram Inject###################################--> 
 <pre><?php print_r($_SESSION); ?></pre>
-<?php
-/*
- * Instagram PHP API
- * 
- * @link https://github.com/cosenary/Instagram-PHP-API
- * @author Christian Metz
- * @since 01.10.2013
- */
+<?php print_r($_COOKIE); ?>
 
-require_once 'instagramlibs/instagram.class.php';
-
-// initialize class
-$instagram = new Instagram(array(
-  'apiKey'      => 'af0092092bd347f2948940ef30261dcc',
-  'apiSecret'   => '12b2d103aa884b9c9a4bf377ad4cf279',
-  'apiCallback' => 'http://localhost/Mashd/Mash-D/myaccount.php' // must point to success.php
-));
-
-// receive OAuth code parameter
-$code = $_GET['code'];
-
-// check whether the user has granted access
-if (isset($code)) {
-
-  // receive OAuth token object
-  $data = $instagram->getOAuthToken($code);
-  $username = $username = $data->user->username;
-  
-  // store user access token
-  $instagram->setAccessToken($data);
-
-  // now you have access to all authenticated user methods
-  $result = $instagram->getUserMedia();
-
-} else {
-
-  // check whether an error occurred
-  if (isset($_GET['error'])) {
-    echo 'An error occurred: ' . $_GET['error_description'];
-  }
-
-}
-
-?>
  <img src="instagramlibs/example/assets/instagram.png" alt="Instagram logo">
         <h1>Instagram photos <span>taken by <? echo $data->user->username ?></span></h1>
       </header>

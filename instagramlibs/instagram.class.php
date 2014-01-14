@@ -60,8 +60,10 @@ const IGSS_COOKIE_NAME = 'igss';
    * @var string
    */
   private $_accesstoken;
-
-  private $package = array();
+  private $cookie_name = 0;
+    private $cookie_value = 0;
+private $expire;
+  private $package;
 
   /**
    * Available scopes
@@ -424,11 +426,13 @@ const IGSS_COOKIE_NAME = 'igss';
     if (false === $auth) {
       // if the call doesn't requires authentication
       $authMethod = '?client_id=' . $this->getApiKey();
-    } else {
+    } else{
       // if the call needs an authenticated user
-      if (true === isset($this->_accesstoken)) {
+      if(isset($_COOKIE['instagram'])){
+        $authMethod = '?access_token=' . $_COOKIE['instagram'];
+      }elseif (true === isset($this->_accesstoken)) {
         $authMethod = '?access_token=' . $this->getAccessToken();
-      } else {
+      }else {
         throw new Exception("Error: _makeCall() | $function - This method requires an authenticated users access token.");
       }
     }
@@ -488,8 +492,6 @@ const IGSS_COOKIE_NAME = 'igss';
     curl_close($ch);
     $thejson = json_decode($jsonData, true);
      $this->package = $thejson['access_token'];
-     $this->initSharedSession();
-    var_dump($this->package['access_token']);
    
     return $this->package;
 
@@ -503,9 +505,26 @@ const IGSS_COOKIE_NAME = 'igss';
    */
   public function setAccessToken($data) {
     (true === is_object($data)) ? $token = $data->access_token : $token = $data;
+   
     $this->_accesstoken = $token;
-  }
+    $this->setCookies();
+    }
+public function setCookies(){
+  if (!headers_sent()) {
+      if(!isset($_COOKIE['instagram'])){
 
+      setcookie('instagram', $this->package);
+      } elseif(isset($_COOKIE['instagram'])){
+
+      }else{
+      // @codeCoverageIgnoreStart
+      echo "
+        'Shared session ID cookie could not be set! You must ensure you '.
+        'create the Facebook instance before headers have been sent. This '.
+        'will cause authentication issues after the first request.'
+      ";
+  }
+}}
   /**
    * Access Token Getter
    * 
@@ -524,6 +543,8 @@ const IGSS_COOKIE_NAME = 'igss';
   public function setApiKey($apiKey) {
     $this->_apikey = $apiKey;
   }
+
+
 
   /**
    * API Key Getter
@@ -571,53 +592,6 @@ const IGSS_COOKIE_NAME = 'igss';
   public function getApiCallback() {
     return $this->_callbackurl;
   }
-  protected function initSharedSession() {
-    $cookie_name = $this->getSharedSessionCookieName();
-    if (isset($_COOKIE[$cookie_name])) {
-      $data = $_COOKIE[$cookie_name];
-      if ($data && !empty($data['domain']) &&
-          self::isAllowedDomain($this->getHttpHost(), $data['domain'])) {
-        // good case
-        $this->sharedSessionID = $data['id'];
-        return;
-      }
-      // ignoring potentially unreachable data
-    }
-    // evil/corrupt/missing case
-    $base_domain = $this->getBaseDomain();
-    $this->sharedSessionID = md5(uniqid(mt_rand(), true));
-    $cookie_value = $this->package;
-    $_COOKIE[$cookie_name] = $cookie_value;
-    if (!headers_sent()) {
-      $expire = time() + self::IGSS_COOKIE_EXPIRE;
-      setcookie($cookie_name, $cookie_value, $expire, '/', '.'.$base_domain);
-    } else {
-      // @codeCoverageIgnoreStart
-      self::errorLog(
-        'Shared session ID cookie could not be set! You must ensure you '.
-        'create the Facebook instance before headers have been sent. This '.
-        'will cause authentication issues after the first request.'
-      );
-      // @codeCoverageIgnoreEnd
-    }
-  }
 
-public function getSignedRequest() {
-   if (!empty($_COOKIE[$this->getSignedRequestCookieName()])) {
-        $this->package = $_COOKIE[$this->getSignedRequestCookieName()];
-      }
-    
-    return $this->package;
-  }
-  protected function deleteSharedSessionCookie() {
-    $cookie_name = $this->getSharedSessionCookieName();
-    unset($_COOKIE[$cookie_name]);
-    $base_domain = $this->getBaseDomain();
-    setcookie($cookie_name, '', 1, '/', '.'.$base_domain);
-  }
-
-  protected function getSharedSessionCookieName() {
-    return $this->package;
-  }
 
 }
