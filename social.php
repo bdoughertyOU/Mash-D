@@ -39,7 +39,8 @@ $instagram_loginUrl = $instagram->getLoginUrl();
 </head>
   <body>
     <a href="myaccount.php">My Account</a>
-    <pre><?php print_r($_SESSION); ?></pre>
+    <pre><?php print_r($_SESSION); ?><br/>
+    <?php print_r($_COOKIE); ?></pre>
     <!--facebook stuff -->
     <?php if ($user): ?>
       <a href="<?php echo $logoutUrl; ?>">Logout</a>

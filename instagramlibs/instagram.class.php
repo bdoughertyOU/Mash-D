@@ -142,7 +142,7 @@ private $expire;
    * @param integer [optional] $limit     Limit of returned results
    * @return mixed
    */
-  public function getUserFeed($limit = 0) {
+  public function getUserFeed($limit) {
     return $this->_makeCall('users/self/feed', true, array('count' => $limit));
   }
 

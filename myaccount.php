@@ -20,30 +20,29 @@ $instagram = new Instagram(array(
   'apiCallback' => 'http://localhost/Mashd/Mash-D/myaccount.php' // must point to success.php
 ));
 
-// receive OAuth code parameter
-$code = $_GET['code'];
 
 // check whether the user has granted access
 if (isset($_COOKIE['instagram'])) {
 
   // receive OAuth token object
     // store user access token
-  $instagram->setAccessToken($_COOKIE['instagram']);
+  $data = $instagram->setAccessToken($_COOKIE['instagram']);
+$ig_username = $instagram-> getUser();
 
   // now you have access to all authenticated user methods
-  $result = $instagram->getUserMedia();
+  $result = $instagram->getUserFeed(15);
 
-}elseif (isset($code)) {
+}elseif (isset($_GET['code'])) {
 
   // receive OAuth token object
-  $data = $instagram->getOAuthToken($code);
-  $username = $username = $data->user->username;
-  
+  $data = $instagram->getOAuthToken($_GET['code']);
+  $username = $instagram-> getUser();
+ 
   // store user access token
-  $instagram->setAccessToken($data);
+  $ig_instagram->setAccessToken($data);
 
   // now you have access to all authenticated user methods
-  $result = $instagram->getUserMedia();
+  $result = $instagram->getUserFeed(15);
 
 } else {
 
@@ -61,6 +60,7 @@ if (isset($_COOKIE['instagram'])) {
 
 
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 <title>My Account</title>
@@ -114,48 +114,53 @@ if (checkAdmin()) {
 
 <!--#############################################################################-->  
 <!--###########################Instagram Inject###################################--> 
+<?php if (empty($ig_username)): ?>
+  <pre><?php print_r($_SESSION); ?></pre>
+<?php print_r($_COOKIE); ?>
+  <?php endif ?>
+ <?php if (isset($ig_username)): ?> 
 <pre><?php print_r($_SESSION); ?></pre>
 <?php print_r($_COOKIE); ?>
-
  <img src="instagramlibs/example/assets/instagram.png" alt="Instagram logo">
-        <h1>Instagram photos <span>taken by <? echo $data->user->username ?></span></h1>
+        <h1><span><?php echo $ig_username->data->username ?></span>'s Instagram feed</h1>
       </header>
-      <div class="main">
+      <div class="main"><?php print_r($result->data);?>
         <ul class="grid">
         <?php
           // display all user likes
           foreach ($result->data as $media) {
             $content = "<li>";
-            
+            $profilepic = $media->user->profile_picture;
+            $igposter = $media->user->username;
+            echo "<span><img src ='$profilepic' width='55' height='55'/><p>$igposter</p></span><br/>";
             // output media
             if ($media->type === 'video') {
               // video
               $poster = $media->images->low_resolution->url;
               $source = $media->videos->standard_resolution->url;
-              $content .= "<video class=\"media video-js vjs-default-skin\" width=\"250\" height=\"250\" poster=\"{$poster}\"
-                           data-setup='{\"controls\":true, \"preload\": \"auto\"}'>
+              $content .= "<video  width=\"250\" height=\"250\" controls>
                              <source src=\"{$source}\" type=\"video/mp4\" />
+                             <object data=\"{$source}\" width=\"250\" height=\"250\"></object>
                            </video>";
             } else {
               // image
-              $image = $media->images->low_resolution->url;
+              $image = $media->images->standard_resolution->url;
               $content .= "<img class=\"media\" src=\"{$image}\"/>";
             }
             
             // create meta section
-            $avatar = $media->user->profile_picture;
             $username = $media->user->username;
-            $comment = $media->caption->text;
-            $content .= "<div class=\"content\">
-                           <div class=\"avatar\" style=\"background-image: url({$avatar})\"></div>
-                           <p>{$username}</p>
-                           <div class=\"comment\">{$comment}</div>
-                         </div>";
             
+            if(!empty($media->caption->text)){
+            $content .= "<div class=\"content\">
+                           <div class=\"comment\">{$media->caption->text}</div>
+                         </div>";
+            }
             // output media
             echo $content . "</li>";
           }
         ?>
+        <?php endif ?>
 	 
       </td>
     <td width="196" valign="top">&nbsp;</td>
