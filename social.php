@@ -1,23 +1,7 @@
 <?php
 include 'facebooklibs/auth.php';
+include 'instagramlibs/instagramAuth.php';
 ?>
-<?php
-
-require 'instagramlibs/instagram.class.php';
-
-// initialize class
-$instagram = new Instagram(array(
-  'apiKey'      => 'af0092092bd347f2948940ef30261dcc',
-  'apiSecret'   => '12b2d103aa884b9c9a4bf377ad4cf279',
-  'apiCallback' => 'http://localhost/Mashd/Mash-D/myaccount.php' // must point to success.php
-));
-
-
-// create login URL
-$instagram_loginUrl = $instagram->getLoginUrl();
-
-?>
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -59,9 +43,10 @@ $instagram_loginUrl = $instagram->getLoginUrl();
     <!--End facebook stuff -->
 
     <!--Instagram stuff -->
-    <?php if (isset($_SESSION['InstagramAccessToken']) && !empty($_SESSION['InstagramAccessToken'])):?>
+    <?php if (isset($_COOKIE['instagram'])):?>
       <h3>You are using Instagram with Mash'D</h3>
-
+    <?php elseif (!empty($_GET['code'])): ?>
+      <h3>You are using Instagram with Mash'D</h3>
     <?php else: ?>
       <div>
        <a href="<?php echo $instagram_loginUrl; ?>">Instagram Login</a>
@@ -69,8 +54,13 @@ $instagram_loginUrl = $instagram->getLoginUrl();
       </div>
     <?php endif ?>
 
-    <!--Instagram stuff  -->
+    <!--End Instagram stuff  -->
 
+    <!--Twitter stuff  -->
+
+
+
+    <!--End Twitter stuff  -->
     <p><a href="#">Twitter Login</a></p>
     <p><a href="#">Vine Login</a></p>
     <p><a href="#">Reddit Login</a></p>

@@ -108,3 +108,8 @@ array(1) { [0]=> object(stdClass)#3 (2) { ["meta"]=> object(stdClass)#4 (1)
 	-emojis
 	-time ago was posted
 	-
+
+	TWITTER
+	-wont let you register an app for oAuth with out websitethat has ".com" after it localhost/ wont work
+
+	VINE
