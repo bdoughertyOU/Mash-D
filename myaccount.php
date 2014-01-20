@@ -3,7 +3,7 @@ include 'dbc.php';
 page_protect();
 include 'facebooklibs/auth.php';
 include 'instagramlibs/instagramAuth.php';
-
+include 'twitterlibs/twitterauth.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,8 +51,11 @@ if (checkAdmin()) {
       if (isset($_GET['msg'])) {
 	  echo "<div class=\"error\">$_GET[msg]</div>";
 	  }
+
 	  	  
 	  ?>
+    <pre><?php print_r($_SESSION); ?><br/>
+    <?php print_r($_COOKIE); ?></pre>
 <!--##############################################################################-->  
 <!--###########################FaceBook Inject####################################--> 
 <?php #include 'facebook_parse.php';?> 
@@ -63,7 +66,13 @@ if (checkAdmin()) {
 
 <!--##############################################################################-->  
 <!--###########################Twitter Inject#####################################--> 
+<?php 
+$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+$method = 'statuses/home_timeline';
+$the_response = $connection->get($method);
 
+var_dump($the_response);
+?>
       </td>
     <td width="196" valign="top">&nbsp;</td>
   </tr>

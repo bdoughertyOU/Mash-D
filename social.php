@@ -1,6 +1,8 @@
 <?php
 include 'facebooklibs/auth.php';
 include 'instagramlibs/instagramAuth.php';
+include 'twitterlibs/twitterauth.php';
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -57,11 +59,23 @@ include 'instagramlibs/instagramAuth.php';
     <!--End Instagram stuff  -->
 
     <!--Twitter stuff  -->
-
-
+<h2> Twitter OAuth PHP example.</h2>
+  
+      <p><a href='twitterlibs/clearsessions.php'>clearing your session</a>.</p>
+      <?php if (isset($menu)) { ?>
+        <?php echo $menu; ?>
+      <?php } ?>
+    </div>
+    <?php if (isset($status_text)) { ?>
+      <?php echo '<h3>'.$status_text.'</h3>'; ?>
+    <?php } ?>
+    <p>
+      <pre>
+        <?php print_r($content); ?>
+      </pre>
+    </p>
 
     <!--End Twitter stuff  -->
-    <p><a href="#">Twitter Login</a></p>
     <p><a href="#">Vine Login</a></p>
     <p><a href="#">Reddit Login</a></p>
 

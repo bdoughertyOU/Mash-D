@@ -6,14 +6,14 @@
 
 /* Load required lib files. */
 session_start();
-require_once('twitteroauth/twitteroauth.php');
-require_once('config.php');
+require_once('twitterlibs/twitteroauth/twitteroauth.php');
+require_once('twitterlibs/config.php');
 
-/* If access tokens are not available redirect to connect page. */
+/* If access tokens are not available redirect to connect page. 
 if (empty($_SESSION['access_token']) || empty($_SESSION['access_token']['oauth_token']) || empty($_SESSION['access_token']['oauth_token_secret'])) {
     header('Location: ./clearsessions.php');
 }
-/* Get user access tokens out of the session. */
+ Get user access tokens out of the session. */
 $access_token = $_SESSION['access_token'];
 
 /* Create a TwitterOauth object with consumer/user tokens. */
@@ -28,6 +28,7 @@ $content = $connection->get('account/verify_credentials');
 //$connection->post('statuses/destroy', array('id' => 5437877770));
 //$connection->post('friendships/create', array('id' => 9436992));
 //$connection->post('friendships/destroy', array('id' => 9436992));
-
+$content = '<a href="twitterlibs/redirect.php"><img src="twitterlibs/images/lighter.png" alt="Sign in with Twitter"/></a>';
 /* Include HTML to display on the page */
-include('html.inc');
+?>
+
