@@ -67,11 +67,27 @@ if (checkAdmin()) {
 <!--##############################################################################-->  
 <!--###########################Twitter Inject#####################################--> 
 <?php 
+if (isset ($_SESSION['access_token'])){
+$access_token = $_SESSION['access_token'];
+
 $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
 $method = 'statuses/home_timeline';
 $the_response = $connection->get($method);
 
-var_dump($the_response);
+foreach ($the_response as $twitter){
+  if (isset($twitter->retweeted_status)){
+    $img = $twitter->retweeted_status->user->profile_image_url;
+    echo "<img src='$img'>";
+    echo "<br/>";
+  }else{
+    $img = $twitter->user->profile_image_url;
+    echo "<img src='$img'>";
+    echo "<br/>";
+  }
+  print_r($twitter);
+  echo "<br/><br/>";
+}
+}
 ?>
       </td>
     <td width="196" valign="top">&nbsp;</td>

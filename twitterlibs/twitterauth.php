@@ -5,7 +5,7 @@
  */
 
 /* Load required lib files. */
-session_start();
+
 require_once('twitterlibs/twitteroauth/twitteroauth.php');
 require_once('twitterlibs/config.php');
 
@@ -14,14 +14,16 @@ if (empty($_SESSION['access_token']) || empty($_SESSION['access_token']['oauth_t
     header('Location: ./clearsessions.php');
 }
  Get user access tokens out of the session. */
+ if (isset ($_SESSION['access_token'])){
 $access_token = $_SESSION['access_token'];
+
 
 /* Create a TwitterOauth object with consumer/user tokens. */
 $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
 
 /* If method is set change API call made. Test is called by default. */
 $content = $connection->get('account/verify_credentials');
-
+}
 /* Some example calls */
 //$connection->get('users/show', array('screen_name' => 'abraham'));
 //$connection->post('statuses/update', array('status' => date(DATE_RFC822)));
