@@ -1,10 +1,4 @@
-<?php if (empty($ig_username)): ?>
-  <pre><?php print_r($_SESSION); ?></pre>
-<?php print_r($_COOKIE); ?>
-  <?php endif ?>
- <?php if (isset($ig_username)): ?> 
-<pre><?php print_r($_SESSION); ?></pre>
-<?php print_r($_COOKIE); ?>
+<?php if (isset($ig_username)): ?> 
  <img src="instagramlibs/example/assets/instagram.png" alt="Instagram logo">
         <h1><span><?php echo $ig_username->data->username ?></span>'s Instagram feed</h1>
       </header>

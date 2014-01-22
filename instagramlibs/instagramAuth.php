@@ -16,12 +16,12 @@ $instagram = new Instagram(array(
 $instagram_loginUrl = $instagram->getLoginUrl();
 
 // check whether the user has granted access
-if (isset($_COOKIE['instagram'])) {
+if (isset($_SESSION['instagram'])) {
   // receive OAuth token object
     // store user access token
-  $instagram->setAccessToken($_COOKIE['instagram']);
+  $instagram->setAccessToken($_SESSION['instagram']);
   // now you have access to all authenticated user methods
-  $data = $instagram->setAccessToken($_COOKIE['instagram']);
+  $data = $instagram->setAccessToken($_SESSION['instagram']);
   // now you have access to all authenticated user methods
   $ig_username = $instagram->getUser();
   $result = $instagram->getUserFeed(15);

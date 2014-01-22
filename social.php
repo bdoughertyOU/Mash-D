@@ -1,4 +1,6 @@
 <?php
+include 'dbc.php';
+page_protect();
 include 'facebooklibs/auth.php';
 include 'instagramlibs/instagramAuth.php';
 include 'twitterlibs/twitterauth.php';

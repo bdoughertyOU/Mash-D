@@ -28,11 +28,11 @@ class Instagram {
    */
   const API_OAUTH_TOKEN_URL = 'https://api.instagram.com/oauth/access_token';
 
-const IGSS_COOKIE_NAME = 'igss';
+const IGSS_SESSION_NAME = 'igss';
 
   // We can set this to a high number because the main session
   // expiration will trump this.
-  const IGSS_COOKIE_EXPIRE = 31556926; // 1 year
+  const IGSS_SESSION_EXPIRE = 31556926; // 1 year
   /**
    * The Instagram API Key
    * 
@@ -428,8 +428,8 @@ private $expire;
       $authMethod = '?client_id=' . $this->getApiKey();
     } else{
       // if the call needs an authenticated user
-      if(isset($_COOKIE['instagram'])){
-        $authMethod = '?access_token=' . $_COOKIE['instagram'];
+      if(isset($_SESSION['instagram'])){
+        $authMethod = '?access_token=' . $_SESSION['instagram'];
       }elseif (true === isset($this->_accesstoken)) {
         $authMethod = '?access_token=' . $this->getAccessToken();
       }else {
@@ -507,14 +507,14 @@ private $expire;
     (true === is_object($data)) ? $token = $data->access_token : $token = $data;
    
     $this->_accesstoken = $token;
-    $this->setCookies();
+    $this->setSession();
     }
-public function setCookies(){
+public function setSession(){
   if (!headers_sent()) {
-      if(!isset($_COOKIE['instagram'])){
+      if(!isset($_SESSION['instagram'])){
 
-      setcookie('instagram', $this->package);
-      } elseif(isset($_COOKIE['instagram'])){
+      $_SESSION['instagram'] = $this->package;
+      } elseif(isset($_SESSION['instagram'])){
 
       }else{
       // @codeCoverageIgnoreStart
