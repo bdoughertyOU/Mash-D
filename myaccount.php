@@ -62,7 +62,7 @@ if (checkAdmin()) {
 
 <!--##############################################################################-->  
 <!--###########################Instagram Inject###################################--> 
-<?php include 'instagram_parse.php';?>
+<?php #include 'instagram_parse.php';?>
 
 <!--##############################################################################-->  
 <!--###########################Twitter Inject#####################################--> 
@@ -74,19 +74,19 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oau
 $method = 'statuses/home_timeline';
 $the_response = $connection->get($method);
 
-foreach ($the_response as $twitter){
-  if (isset($twitter->retweeted_status)){
-    $img = $twitter->retweeted_status->user->profile_image_url;
-    echo "<img src='$img'>";
-    echo "<br/>";
-  }else{
-    $img = $twitter->user->profile_image_url;
-    echo "<img src='$img'>";
-    echo "<br/>";
+  foreach ($the_response as $twitter){
+    if (isset($twitter->retweeted_status)){
+      $img = $twitter->retweeted_status->user->profile_image_url;
+      echo "<img src='$img'>";
+      echo "<br/>";
+    }else{
+      $img = $twitter->user->profile_image_url;
+      echo "<img src='$img'>";
+      echo "<br/>";
+    }
+    print_r($twitter);
+    echo "<br/><br/>";
   }
-  print_r($twitter);
-  echo "<br/><br/>";
-}
 }
 ?>
       </td>

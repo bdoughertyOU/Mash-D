@@ -47,9 +47,7 @@ include 'twitterlibs/twitterauth.php';
     <!--End facebook stuff -->
 
     <!--Instagram stuff -->
-    <?php if (isset($_COOKIE['instagram'])):?>
-      <h3>You are using Instagram with Mash'D</h3>
-    <?php elseif (!empty($_GET['code'])): ?>
+    <?php if (isset($_SESSION['instagram'])):?>
       <h3>You are using Instagram with Mash'D</h3>
     <?php else: ?>
       <div>
@@ -60,23 +58,15 @@ include 'twitterlibs/twitterauth.php';
 
     <!--End Instagram stuff  -->
 
-    <!--Twitter stuff  -->
-<h2> Twitter OAuth PHP example.</h2>
-  
-      <p><a href='twitterlibs/clearsessions.php'>clearing your session</a>.</p>
-      <?php if (isset($menu)) { ?>
-        <?php echo $menu; ?>
-      <?php } ?>
-    </div>
-    <?php if (isset($status_text)) { ?>
-      <?php echo '<h3>'.$status_text.'</h3>'; ?>
-    <?php } ?>
+    <!--Twitter stuff  -->  
+    <?php if (isset($_SESSION['access_token'])):?>
+      <h3>You are using Twitter with Mash'D</h3>
+    <?php else: ?>
     <p>
-      <pre>
-        <?php print_r($content); ?>
-      </pre>
-    </p>
-
+      <?php print_r($content); ?>
+      <strong><em>You are not Connected.</em></strong>
+   </p>
+   <?php endif ?>
     <!--End Twitter stuff  -->
     <p><a href="#">Vine Login</a></p>
     <p><a href="#">Reddit Login</a></p>
