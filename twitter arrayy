@@ -1,0 +1,130 @@
+stdClass Object ( 
+[created_at] => Thu Jan 23 02:32:15 +0000 2014 
+[id] => 4.26180549624E+17 
+[id_str] => 426180549623832576 
+[text] => â€˜Twas the night before launch! #AtlasV rocket w/ #TDRS-L satellite on board @NASAKennedy: http://t.co/HYRVesbvYA http://t.co/SVSQps6JPQ [
+source] => SocialEngage 
+[truncated] => 
+[in_reply_to_status_id] => 
+[in_reply_to_status_id_str] => 
+[in_reply_to_user_id] => 
+[in_reply_to_user_id_str] => 
+[in_reply_to_screen_name] => 
+[user] => stdClass Object ( 
+	[id] => 11348282 
+	[id_str] => 11348282 
+	[name] => NASA 
+	[screen_name] => NASA 
+	[location] => 
+	[description] => Explore the universe and discover our home planet with @NASA. We usually post in EST (UTC-5). 
+	[url] => http://t.co/G62SmOZ13N 
+	[entities] => stdClass Object ( 
+		[url] => stdClass Object ( 
+			[urls] => Array ( 
+				[0] => stdClass Object ( 
+					[url] => http://t.co/G62SmOZ13N 
+					[expanded_url] => http://www.nasa.gov 
+					[display_url] => nasa.gov 
+					[indices] => Array ( 
+						[0] => 0 
+						[1] => 22 
+					) 
+				) 
+			) 
+		) 
+		[description] => stdClass Object ( 
+			[urls] => Array ( ) 
+		) 
+	) 
+	[protected] => 
+	[followers_count] => 5749765 
+	[friends_count] => 207 
+	[listed_count] => 62447 
+	[created_at] => Wed Dec 19 20:20:32 +0000 2007 
+	[favourites_count] => 88 
+	[utc_offset] => -18000 
+	[time_zone] => Eastern Time (US & Canada) 
+	[geo_enabled] => 1 
+	[verified] => 1 
+	[statuses_count] => 28872 
+	[lang] => en 
+	[contributors_enabled] => 
+	[is_translator] => 
+	[profile_background_color] => FFFFFF 
+	[profile_background_image_url] => http://pbs.twimg.com/profile_background_images/378800000070768280/1e9d3d155ba7cb623d541c764c5ef9c0.jpeg 
+	[profile_background_image_url_https] => https://pbs.twimg.com/profile_background_images/378800000070768280/1e9d3d155ba7cb623d541c764c5ef9c0.jpeg 
+	[profile_background_tile] => 
+	[profile_image_url] => http://pbs.twimg.com/profile_images/188302352/nasalogo_twitter_normal.jpg 
+	[profile_image_url_https] => https://pbs.twimg.com/profile_images/188302352/nasalogo_twitter_normal.jpg 
+	[profile_banner_url] => https://pbs.twimg.com/profile_banners/11348282/1389998453 
+	[profile_link_color] => 55648C 
+	[profile_sidebar_border_color] => 000000 
+	[profile_sidebar_fill_color] => F3F2F2 
+	[profile_text_color] => 000000 
+	[profile_use_background_image] => 1 
+	[default_profile] => [
+	default_profile_image] => 
+	following] => 1 
+	[follow_request_sent] => 
+	[notifications] => 
+) 
+[geo] => [
+coordinates] => 
+[place] => 
+contributors] => 
+[retweet_count] => 420 
+[favorite_count] => 403 
+[entities] => stdClass Object ( 
+	[hashtags] => Array ( 
+		[0] => stdClass Object ( 
+			[text] => AtlasV 
+			[indices] => Array ( 
+				[0] => 31 
+				[1] => 38 
+			) 
+		) 
+		[1] => stdClass Object ( 
+			[text] => TDRS 
+			[indices] => Array ( 
+				[0] => 49 
+				[1] => 54 
+			) 
+		) 
+	) 
+	[symbols] => Array ( ) 
+	[urls] => Array ( 
+		[0] => stdClass Object ( 
+			[url] => http://t.co/HYRVesbvYA 
+			[expanded_url] => http://instagram.com/p/jfqAavIaDs 
+			[display_url] => instagram.com/p/jfqAavIaDs 
+			[indices] => Array ( [0] => 90 [1] => 112 ) 
+		) 
+	) 
+	[user_mentions] => Array ( 
+		[0] => stdClass Object ( 
+			[screen_name] => NASAKennedy 
+			[name] => NASA Kennedy / KSC 
+			[id] => 16580226 
+			[id_str] => 16580226 
+			[indices] => Array ( 
+				[0] => 76 
+				[1] => 88 
+			) 
+		) 
+	) 
+	[media] => Array ( 
+		[0] => stdClass Object ( 
+			[id] => 4.26180549267E+17 
+			[id_str] => 426180549267320832 
+			[indices] => Array ( 
+				[0] => 113 
+				[1] => 135 
+			) 
+			[media_url] => http://pbs.twimg.com/media/BeoY85lCcAA4PTL.jpg 
+			[media_url_https] => https://pbs.twimg.com/media/BeoY85lCcAA4PTL.jpg 
+			[url] => http://t.co/SVSQps6JPQ 
+			[display_url] => pic.twitter.com/SVSQps6JPQ 
+			[expanded_url] => http://twitter.com/NASA/status/426180549623832576/photo/1 
+			[type] => photo [
+			sizes] => stdClass Object ( 
+				[medium] => stdClass Object ( [w] => 600 [h] => 450 [resize] => fit ) [large] => stdClass Object ( [w] => 1024 [h] => 768 [resize] => fit ) [thumb] => stdClass Object ( [w] => 150 [h] => 150 [resize] => crop ) [small] => stdClass Object ( [w] => 340 [h] => 255 [resize] => fit ) ) ) ) ) [favorited] => [retweeted] => [possibly_sensitive] => [lang] => en ) 
