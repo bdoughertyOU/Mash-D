@@ -1,14 +1,26 @@
 <?php
+$vine = new Vine;
+
+
 $username = 'jillianmyla@aol.com';
 $password = 'glennn11';
 
-$key = vineAuth($username,$password);
+$key = $vine->vineAuth($username,$password);
 
 $userId = strtok($key,'-');
 
 
-$records = vineTimeline($userId,$key);
-var_dump($records);
+$records = $vine->vineTimeline($userId,$key);
+
+
+foreach($records['data']['records'] as $vines){
+
+         echo "<br/>";
+    print_r($vines);
+    echo "<br/><br/>";
+}
+
+class Vine {
 
 function vineAuth($username,$password)
 {
@@ -65,5 +77,6 @@ function vineTimeline($userId,$key)
         }
 
         curl_close($ch);
+}
 }
 ?>

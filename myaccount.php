@@ -4,6 +4,7 @@ page_protect();
 include 'facebooklibs/auth.php';
 include 'instagramlibs/instagramAuth.php';
 include 'twitterlibs/twitterauth.php';
+include 'vinelibs/vine.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,106 +59,19 @@ if (checkAdmin()) {
     <?php print_r($_COOKIE); ?></pre>
 <!--##############################################################################-->  
 <!--###########################FaceBook Inject####################################--> 
-<?php include 'facebook_parse.php';?> 
+<?php #include 'facebook_parse.php';?> 
 
 <!--##############################################################################-->  
 <!--###########################Instagram Inject###################################--> 
-<?php include 'instagram_parse.php';?>
+<?php #include 'instagram_parse.php';?>
 
 <!--##############################################################################-->  
 <!--###########################Twitter Inject#####################################--> 
-<?php 
-if (isset ($_SESSION['access_token'])){
-$access_token = $_SESSION['access_token'];
+<?php #include 'twitter_parse.php';?>
 
-$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
-$method = 'statuses/home_timeline';
-$the_response = $connection->get($method);
-foreach ($the_response as $twitter){
-  $id = $twitter->id_str;
-    $comments_method = 'expanded/batch/$id?include_entities=true&include_rts=true&count=7';
-    $comments = $connection->get($comments_method);
-    if (isset($twitter->retweeted_status)){
-      $img = $twitter->retweeted_status->user->profile_image_url;
-      $retweeter = $twitter->user->name;
-      $user_name = $twitter->retweeted_status->user->name;
-      $user_profile_name = $twitter->retweeted_status->user->screen_name;
-      $tweet = $twitter->retweeted_status->text;
-      $match = preg_match('/http:\/\/t.co([^ ]+)/', $tweet);
-      if ($match === 1){
-        if(!empty($twitter->entities->urls)){
-          foreach($twitter->entities->urls as $urlss){
-            $the_url = $urlss->url;
-            $the_new_url = "<a href='$urlss->expanded_url' >" .  $urlss->display_url . "</a>";
-          $tweet = str_replace($the_url, $the_new_url, $tweet);
-          }
-        }
-        if(isset($twitter->entities->media)){
-         foreach($twitter->entities->media as $other_urls){
-            $the_url = $other_urls->url;
-            $the_new_url = "<a href='$other_urls->expanded_url' >" .  $other_urls->display_url . "</a>";
-          $tweet = str_replace($the_url, $the_new_url, $tweet);
-          }
-        }
+<!--##############################################################################-->  
+<!--###########################Vine Inject#####################################--> 
 
-      }
-      echo "Retweeted by " . $retweeter . "<br/>";
-      echo "<img src='$img'>";
-      echo " " . $user_name;
-      echo " @" . $user_profile_name;
-      echo "<br/>";
-      echo $tweet;
-      echo "<br/>";
-      if(isset($twitter->entities->media)){
-        foreach($twitter->entities->media as $the_media){
-          $some_media = $the_media->media_url;
-          echo "<img src='$some_media'>";
-        } 
-      }
-    }else{
-      $img = $twitter->user->profile_image_url;
-      $user_name = $twitter->user->name;
-      $user_profile_name = $twitter->user->screen_name;
-      $tweet = $twitter->text;
-      $match = preg_match('/http:\/\/t.co([^ ]+)/', $tweet);
-      if ($match === 1){
-        if(!empty($twitter->entities->urls)){
-          foreach($twitter->entities->urls as $urlss){
-            $the_url = $urlss->url;
-            $the_new_url = "<a href='$urlss->expanded_url' >" .  $urlss->display_url . "</a>";
-          $tweet = str_replace($the_url, $the_new_url, $tweet);
-          }
-        }
-        if(isset($twitter->entities->media)){
-         foreach($twitter->entities->media as $other_urls){
-            $the_url = $other_urls->url;
-            $the_new_url = "<a href='$other_urls->expanded_url' >" .  $other_urls->display_url . "</a>";
-          $tweet = str_replace($the_url, $the_new_url, $tweet);
-          }
-        }
-      }
-      echo "<img src='$img'>";
-      echo " " . $user_name;
-      echo " @" . $user_profile_name;
-      echo "<br/>";
-      echo $tweet;
-      echo "<br/>";
-      echo $twitter->media;
-      if(isset($twitter->entities->media)){
-        foreach($twitter->entities->media as $the_media){
-          $some_media = $the_media->media_url;
-          echo "<img src='$some_media'>";
-        } 
-      }
-    }
-    echo "<br/>";
-    print_r($twitter);
-    echo "<br/><br/>";
-    var_dump($comments);
-    echo "<br/><br/>";
-  }
-}
-?>
       </td>
     <td width="196" valign="top">&nbsp;</td>
   </tr>
