@@ -11,14 +11,14 @@ $userId = strtok($key,'-');
 
 
 $records = $vine->vineTimeline($userId,$key);
-
-
+var_dump($records);
+/*
 foreach($records['data']['records'] as $vines){
 
          echo "<br/>";
     print_r($vines);
     echo "<br/><br/>";
-}
+}*/
 
 class Vine {
 
@@ -57,7 +57,7 @@ function vineAuth($username,$password)
 function vineTimeline($userId,$key)
 {
         // Additional endpoints available from https://github.com/starlock/vino/wiki/API-Reference
-        $url = 'https://vine.co/api/timelines/graph';
+        $url = "https://api.vineapp.com/users/" . $userId . "/following";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
