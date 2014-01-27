@@ -1,24 +1,4 @@
 <?php
-$vine = new Vine;
-
-
-$username = 'jillianmyla@aol.com';
-$password = 'glennn11';
-
-$key = $vine->vineAuth($username,$password);
-
-$userId = strtok($key,'-');
-
-
-$records = $vine->vineTimeline($userId,$key);
-var_dump($records);
-/*
-foreach($records['data']['records'] as $vines){
-
-         echo "<br/>";
-    print_r($vines);
-    echo "<br/><br/>";
-}*/
 
 class Vine {
 
@@ -57,12 +37,15 @@ function vineAuth($username,$password)
 function vineTimeline($userId,$key)
 {
         // Additional endpoints available from https://github.com/starlock/vino/wiki/API-Reference
-        $url = "https://api.vineapp.com/users/" . $userId . "/following";
+        $url = "https://api.vineapp.com/timelines/graph";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('vine-session-id: '.$key));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json, text/javascript, */*; q=0.01',
+                                            'x-vine-client: vinewww/1.0',
+                                          'vine-session-id: '.$key,
+                                         'X-Requested-With: XMLHttpRequest'));
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         $result = json_decode(curl_exec($ch), true);
