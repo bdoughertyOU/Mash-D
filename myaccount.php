@@ -14,6 +14,43 @@ include 'vinelibs/vine.php';
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <link href="styles.css" rel="stylesheet" type="text/css">
+<script>
+<?php 
+$vine = new Vine;
+$key = $_SESSION['vine_key'];
+$userId = $_SESSION['vine_userid'];
+$records = $vine->vineTimeline($userId,$key);
+$page = $records['data']['nextPage'];
+$anchor = $records['data']['anchorStr'];
+?>
+function loadXMLDoc()
+{
+var xmlhttp,vineKey,link;
+vineKey = "<?php echo $_SESSION['vine_key']; ?>";
+page = "<?php echo $page?>";
+timelineId = "<?php echo $anchor?>";
+
+link ="https://api.vineapp.com/timelines/graph?page=" + page + "&anchor=" + timelineId;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET",link,true);
+xmlhttp.setRequestHeader("vine-session-id",'Origin:vine.co, Accept: application/json, text/javascript, */*; q=0.01,x-vine-client: vinewww/1.0, vine-session-id: ' + vineKey + ', X-Requested-With: XMLHttpRequest');
+xmlhttp.send();
+}
+</script>
 </head>
 
 <body>
@@ -72,74 +109,9 @@ if (checkAdmin()) {
 
 <!--##############################################################################-->  
 <!--###########################Vine Inject#####################################--> 
-<?php 
-
-$vine = new Vine;
-
-
-$username = 'jillianmyla@aol.com';
-$password = 'glennn11';
-
-$key = $vine->vineAuth($username,$password);
-
-$userId = strtok($key,'-');
-
-
-$records = $vine->vineTimeline($userId,$key);
-
-
-foreach($records['data']['records'] as $vines){
-  $poster_if_revined = $vines['repost']['username'];
-  $original_poster_avatar = $vines['avatarUrl'];
-  $original_poster_username = $vines['username'];
-  $description = $vines['description'];
-  $likes= $vines['likes']['count'];
-  $revines = $vines['reposts']['count'];
-  $num_comments = $vines['comments']['count'];
-if(isset($poster_if_revined)){
-  echo $poster_if_revined . " revined";
-}
-  echo "<br/>";
-
-echo "<img src='$original_poster_avatar' height = 50px width = 50px> ";
-echo $original_poster_username;
-echo "<br/>";
-$video = $vines['videoUrl'];
-                               
-echo "<video width='350' height='350' controls>
-<source src='$video'>
-<object data='$video' width='350' height='350'></object>
-</video>";
-echo "<br/>";
-echo $description;
-echo "<br/>";
-if(!empty($likes)){
-      $num_likes = (int)str_replace(' ', '', $likes);
-      if($num_likes > 1){
-  echo $likes . " Likes ";
-  }else{
-    echo $likes . 'like';
-  }
-}
-if(!empty($revines)){
-  $num_revines = (int)str_replace(' ', '', $revines);
-      if($num_revines > 1){
-  echo $revines . " Revines ";
-  }else{
-    echo $revines . ' Revine';
-  }
-}
-if(!empty($num_comments)){
-  $num_of_comments = (int)str_replace(' ', '', $num_comments);
-  if($num_of_comments > 1){
-  echo $num_comments . " Comments ";
-  }else{
-    echo $num_comments . ' Comment';
-  }
-}
-
-    echo "<br/><br/>";
-}?>
+<?php include 'vine_parse.php';  ?>
+<button type="button" onclick="loadXMLDoc()">Request data</button>
+<div id="myDiv"></div>
       </td>
     <td width="196" valign="top">&nbsp;</td>
   </tr>

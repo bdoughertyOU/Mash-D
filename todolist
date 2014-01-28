@@ -8,19 +8,24 @@
 	-comments
 	-ability to like
 	-ability to comment
-	-emojis
+	
 
 	FACEBOOK
 
 	-time ago was posted
 	-shared posts
+	-comments
+	-ability to like
+	-ability to comment
 
 	TWITTER
 	
 	-time ago
+	-comments
+	-ability to like
+	-ability to comment
 
 	VINE
-	-log out/log -logout you post like a delete or something
 	-time converted to time ago
 	-POST features such as like,revine,twitter,fb
 	-comments,can load the first 10, how to get more.

@@ -4,7 +4,6 @@ page_protect();
 include 'facebooklibs/auth.php';
 include 'instagramlibs/instagramAuth.php';
 include 'twitterlibs/twitterauth.php';
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -68,8 +67,16 @@ include 'twitterlibs/twitterauth.php';
    </p>
    <?php endif ?>
     <!--End Twitter stuff  -->
-    <p><a href="#">Vine Login</a></p>
-    <p><a href="#">Reddit Login</a></p>
 
+    <!--Vine Stuff -->
+    <?php if (isset($_SESSION['vine_key'])):?>
+      <h3>You are using Vine with Mash'D</h3>
+      <a href='vinelogout.php'>Disconnect Vine</a>
+    <?php else: ?>
+    <p><a href="vine_redirect.php">Vine Login</a></p>
+    <?php endif ?>
+    <!--End Vine Stuff -->
+
+    <p><a href="#">Reddit Login</a></p>
   </body>
 </html>
