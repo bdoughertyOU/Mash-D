@@ -62,8 +62,8 @@ function vineTimeline($userId,$key)
         curl_close($ch);
 }
 
-function nextSetofTimelines($key,$page,$timelineId){
-    $url = "https://api.vineapp.com/timelines/graph?page=" . $page . "&anchor=" . $timelineId;
+function nextSetofTimelines($key,$page){
+    $url = "https://api.vineapp.com/timelines/graph?page=" . $page;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

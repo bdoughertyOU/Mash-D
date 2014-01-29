@@ -14,41 +14,22 @@ include 'vinelibs/vine.php';
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <link href="styles.css" rel="stylesheet" type="text/css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
-<?php 
-$vine = new Vine;
-$key = $_SESSION['vine_key'];
-$userId = $_SESSION['vine_userid'];
-$records = $vine->vineTimeline($userId,$key);
-$page = $records['data']['nextPage'];
-$anchor = $records['data']['anchorStr'];
-?>
+
 function loadXMLDoc()
 {
-var xmlhttp,vineKey,link;
-vineKey = "<?php echo $_SESSION['vine_key']; ?>";
-page = "<?php echo $page?>";
-timelineId = "<?php echo $anchor?>";
 
-link ="https://api.vineapp.com/timelines/graph?page=" + page + "&anchor=" + timelineId;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-xmlhttp.onreadystatechange=function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
-    }
-  }
-xmlhttp.open("GET",link,true);
-xmlhttp.setRequestHeader("vine-session-id",'Origin:vine.co, Accept: application/json, text/javascript, */*; q=0.01,x-vine-client: vinewww/1.0, vine-session-id: ' + vineKey + ', X-Requested-With: XMLHttpRequest');
-xmlhttp.send();
+$(document).ready(function(){
+  $("button").click(function(){
+    $.ajax({url:"vineajax.php",success:function(result){
+      $("#myDiv").html(result);
+      var elem = document.getElementById('ajaxbutton1');
+    elem.parentNode.removeChild(elem);
+    }});
+  });
+});
+
 }
 </script>
 </head>
@@ -110,7 +91,7 @@ if (checkAdmin()) {
 <!--##############################################################################-->  
 <!--###########################Vine Inject#####################################--> 
 <?php include 'vine_parse.php';  ?>
-<button type="button" onclick="loadXMLDoc()">Request data</button>
+<button type="button" id="ajaxbutton1" class="1" onclick="loadXMLDoc()">Request data</button>
 <div id="myDiv"></div>
       </td>
     <td width="196" valign="top">&nbsp;</td>
