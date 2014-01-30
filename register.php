@@ -1,24 +1,10 @@
 <?php 
-/*************** PHP LOGIN SCRIPT V 2.0*********************
-***************** Auto Approve Version**********************
-(c) Balakrishnan 2009. All Rights Reserved
 
-Usage: This script can be used FREE of charge for any commercial or personal projects.
-
-Limitations:
-- This script cannot be sold.
-- This script may not be provided for download except on its original site.
-
-For further usage, please contact me.
-
-***********************************************************/
-
-
-include '../dbc.php';
+include 'dbc.php';
 
 $err = array();
 					 
-if($_POST['doRegister'] == 'Register') 
+if($_POST['doRegister'] == 'Register')
 { 
 /******************* Filtering/Sanitizing Input *****************************
 This code filters harmful script code and escapes data of all POST data
@@ -167,8 +153,8 @@ THIS IS AN AUTOMATED RESPONSE.
 <head>
 <title>PHP Login :: Free Registration/Signup Form</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<script language="JavaScript" type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="../js/jquery.validate.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/jquery.validate.js"></script>
 
   <script>
   $(document).ready(function(){
@@ -180,7 +166,7 @@ THIS IS AN AUTOMATED RESPONSE.
   });
   </script>
 
-<link href="../styles.css" rel="stylesheet" type="text/css">
+<link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -462,11 +448,11 @@ THIS IS AN AUTOMATED RESPONSE.
          <tr> 
            <td width="22%"><strong>Image Verification </strong></td>
             <td width="78%"> 
-            <?php /**
-			require_once('../recaptchalib.php');
+            <?php 
+			#require_once('../recaptchalib.php');
 			
-				echo recaptcha_get_html($publickey);
-			**/?>
+				#echo recaptcha_get_html($publickey);
+			?>
             </td>
           </tr>
         </table>

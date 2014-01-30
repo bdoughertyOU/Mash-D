@@ -71,9 +71,9 @@ include 'twitterlibs/twitterauth.php';
     <!--Vine Stuff -->
     <?php if (isset($_SESSION['vine_key'])):?>
       <h3>You are using Vine with Mash'D</h3>
-      <a href='vinelogout.php'>Disconnect Vine</a>
+      <a href='vinelibs/vinelogout.php'>Disconnect Vine</a>
     <?php else: ?>
-    <p><a href="vine_redirect.php">Vine Login</a></p>
+    <p><a href="vinelibs/vine_redirect.php">Vine Login</a></p>
     <?php endif ?>
     <!--End Vine Stuff -->
 

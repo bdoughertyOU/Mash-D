@@ -65,8 +65,8 @@
                 <p> 
                   <input name="doLogin" type="submit" id="doLogin3" value="Login">
                 </p>
-                <p><a href="account/register.php">Register Free</a><font color="#FF6600"> 
-                  |</font> <a href="account/forgot.php">Forgot Password</a> <font color="#FF6600"> 
+                <p><a href="register.php">Register Free</a><font color="#FF6600"> 
+                  |</font> <a href="forgot.php">Forgot Password</a> <font color="#FF6600"> 
                   </font></p>
               </div></td>
           </tr>

@@ -1,7 +1,7 @@
 <?php 
 
-include 'dbc.php';
-include 'vinelibs/vine.php';
+include(dirname(__FILE__).'/../dbc.php');
+include (dirname(__FILE__).'/vine.php');
 
 $err = array();
 
@@ -31,6 +31,6 @@ $_SESSION['vine_key']= $key;
 $_SESSION['vine_userid'] = $userId;
 
 
-header("Location: social.php")
+header("Location: http://localhost/mashd/Mash-D/social.php")
 
 ?>

@@ -22,7 +22,7 @@ function loadXMLDoc()
 
 $(document).ready(function(){
   $("button").click(function(){
-    $.ajax({url:"vineajax.php",success:function(result){
+    $.ajax({url:"vinelibs/vineajax.php",success:function(result){
       $("#myDiv").html(result);
       var elem = document.getElementById('ajaxbutton1');
     elem.parentNode.removeChild(elem);
@@ -90,7 +90,7 @@ if (checkAdmin()) {
 
 <!--##############################################################################-->  
 <!--###########################Vine Inject#####################################--> 
-<?php include 'vine_parse.php';  ?>
+<?php include 'vinelibs/vine_parse.php';  ?>
 <button type="button" id="ajaxbutton1" class="1" onclick="loadXMLDoc()">Request data</button>
 <div id="myDiv"></div>
       </td>

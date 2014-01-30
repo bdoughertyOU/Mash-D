@@ -1,11 +1,12 @@
 <?php 
 session_start();
-	include 'vinelibs/vine.php';
+include (__DIR__.'/vine.php');
+
 
 	$vine = new Vine;
 $key = $_SESSION['vine_key'];
 
-$records = $vine->vineTimeline($userId,$key);
+$records = $vine->vineTimeline($key);
 $page = $records['data']['nextPage'];
 $timelineId = $records['data']['anchorStr'];
 $records= $vine->nextSetofTimelines($key,$page);

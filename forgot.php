@@ -1,5 +1,5 @@
 <?php 
-include '../dbc.php';
+include 'dbc.php';
 
 
 

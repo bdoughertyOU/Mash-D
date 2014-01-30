@@ -2,11 +2,13 @@
 if (isset ($_SESSION['vine_key']) && isset($_SESSION['vine_userid'])){
 $vine = new Vine;
 $key = $_SESSION['vine_key'];
-$userId = $_SESSION['vine_userid'];
-$records = $vine->vineTimeline($userId,$key);
+$records = $vine->vineTimeline($key);
 
 foreach($records['data']['records'] as $vines){
+  if(isset($vines['repost']['username']))
+  {
   $poster_if_revined = $vines['repost']['username'];
+  }
   $original_poster_avatar = $vines['avatarUrl'];
   $original_poster_username = $vines['username'];
   $description = $vines['description'];

@@ -34,7 +34,7 @@ function vineAuth($username,$password)
         curl_close($ch);
 }
 
-function vineTimeline($userId,$key)
+function vineTimeline($key)
 {
         // Additional endpoints available from https://github.com/starlock/vino/wiki/API-Reference
         $url = "https://api.vineapp.com/timelines/graph";
