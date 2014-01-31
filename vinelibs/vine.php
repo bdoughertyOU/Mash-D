@@ -87,5 +87,33 @@ function nextSetofTimelines($key,$page){
 
         curl_close($ch);
 }
+
+function nextSetofComments($key,$postid,$page){
+    $url = "https://api.vineapp.com/posts/" . $postid . "/comments?page=" . $page . "&size=5";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json, text/javascript, */*; q=0.01',
+                                            'x-vine-client: vinewww/1.0',
+                                          'vine-session-id: '.$key,
+                                         'X-Requested-With: XMLHttpRequest'));
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $result = json_decode(curl_exec($ch), true);
+
+        if (!$result)
+        {
+                echo curl_error($ch);
+        }
+        else
+        {
+                return $result;
+        }
+
+        curl_close($ch);
+}
+
+
 }
 ?>

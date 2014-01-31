@@ -26,6 +26,30 @@ $(document).ready(function(){
       $("#myDiv").html(result);
       var elem = document.getElementById('ajaxbutton1');
     elem.parentNode.removeChild(elem);
+
+    }});
+  });
+});
+
+}
+
+function loadVineComments()
+{
+$(document).ready(function(){
+  $("button").click(function(){
+    currentDiv = $(this).closest('div').attr('data');
+    pageValue = parseFloat($(this).attr('data'));
+    newPage = pageValue + 1;
+    $.ajax({url:"vinelibs/vinecommentsajax.php",
+           type:'POST',              
+       dataType:'text',
+           data: {id: $(this).closest('div').attr('data'),
+                  page: newPage},
+        success:function(result){
+       $('div[data="' + currentDiv + '"').find('#commentsContainer').append("<div id='commentDiv" + newPage + "'></div>");
+       $('div[data="' + currentDiv + '"').find('#commentDiv' + newPage).html(result);
+       $('div[data="' + currentDiv + '"').find('button').attr('data', newPage);
+
     }});
   });
 });

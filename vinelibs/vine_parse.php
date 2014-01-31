@@ -15,6 +15,10 @@ foreach($records['data']['records'] as $vines){
   $likes= $vines['likes']['count'];
   $revines = $vines['reposts']['count'];
   $num_comments = $vines['comments']['count'];
+  $postId = $vines['postIdStr'];
+
+ #####START TO PRINT STUFF OUT HERE ###### 
+echo "<div id='vinepost' data='$postId'>";
 if(isset($poster_if_revined)){
   echo $poster_if_revined . " revined";
 }
@@ -56,7 +60,21 @@ if(!empty($num_comments)){
     echo $num_comments . ' Comment';
   }
 }
-    echo "<br/><br/>";
+    echo "<br/>";
+    echo "<button type='button' id='ajaxcommentbutton1' class='1' data='1' onclick='loadVineComments()'>Load previous comments</button>";
+    echo "<br/>";
+    echo "<div id='commentsContainer'></div>";
+    foreach($vines['comments']['records'] as $actual_comments){
+      $comment_profile_img = $actual_comments['avatarUrl'];
+      $comment_poster_username = $actual_comments['username'];
+      $the_comment = $actual_comments['comment'];
+      echo "<br/>";
+      echo "<img src='$comment_profile_img' height = 15px width = 15px>'";
+      echo $comment_poster_username;
+      echo $the_comment;
+    }
+
+    echo "</div><br/>";echo "<br/>";
 }
 
 }#End If isset
