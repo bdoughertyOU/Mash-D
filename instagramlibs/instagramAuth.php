@@ -24,7 +24,12 @@ if (isset($_SESSION['instagram'])) {
   $data = $instagram->setAccessToken($_SESSION['instagram']);
   // now you have access to all authenticated user methods
   $ig_username = $instagram->getUser();
-  $result = $instagram->getUserFeed(15);
+  $result = $instagram->getUserFeed(20);
+  
+  $instagram->savePackage($result);
+
+  $_SESSION['igObject'] = $instagram->getPackage();    
+  
 }elseif (!empty($_GET['code'])){
 
   // receive OAuth token object

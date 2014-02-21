@@ -25,9 +25,9 @@ include 'twitterlibs/twitterauth.php';
     </style>
 </head>
   <body>
-    <a href="myaccount.php">My Account</a>
-    <pre><?php print_r($_SESSION); ?><br/>
-    <?php print_r($_COOKIE); ?></pre>
+    <a href="myaccount.php">My Account</a><br/><br/><br/><br/>
+    <!--<pre><?php print_r($_SESSION); ?><br/>
+    <?php print_r($_COOKIE); ?></pre>-->
     <!--facebook stuff -->
     <?php if ($user): ?>
       <a href="<?php echo $logoutUrl; ?>">Logout</a>

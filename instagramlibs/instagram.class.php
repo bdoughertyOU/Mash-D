@@ -63,7 +63,7 @@ const IGSS_SESSION_NAME = 'igss';
   private $cookie_name = 0;
     private $cookie_value = 0;
 private $expire;
-  private $package;
+ public $package;
 
   /**
    * Available scopes
@@ -392,7 +392,12 @@ private $expire;
       throw new Exception("Error: pagination() | This method doesn't support pagination.");
     }
   }
-
+  public function savePackage($obj){
+    $this->package = $obj;
+  }
+  public function getPackage(){
+    return $this->package;
+  }
   /**
    * Get the OAuth data of a user by the returned callback code
    *
@@ -430,6 +435,7 @@ private $expire;
       // if the call needs an authenticated user
       if(isset($_SESSION['instagram'])){
         $authMethod = '?access_token=' . $_SESSION['instagram'];
+
       }elseif (true === isset($this->_accesstoken)) {
         $authMethod = '?access_token=' . $this->getAccessToken();
       }else {
@@ -491,7 +497,9 @@ private $expire;
     }
     curl_close($ch);
     $thejson = json_decode($jsonData, true);
+    if(isset($thejson['access_token'])){
      $this->package = $thejson['access_token'];
+    }
    
     return $this->package;
 

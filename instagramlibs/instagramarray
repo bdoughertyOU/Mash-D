@@ -2,7 +2,8 @@ array(1) { [0]=> object(stdClass)#3 (2) { ["meta"]=> object(stdClass)#4 (1)
 { ["code"]=> int(200) } ["data"]=> object(stdClass)#5 (7) { ["username"]=> string(16) "brandondougherty" ["bio"]=> string(35) "You can find me where the money is." ["website"]=> string(0) "" ["profile_picture"]=> string(76) "http://images.ak.instagram.com/profiles/profile_10912795_75sq_1371068491.jpg" ["full_name"]=> string(16) "brandondougherty" ["counts"]=> object(stdClass)#6 (3) { ["media"]=> int(81) ["followed_by"]=> int(118) ["follows"]=> int(94) } ["id"]=> string(8) "10912795" } } }
 
 [12] => stdClass Object ( 
-[attribution] => [videos] => stdClass Object ( 
+[attribution] => 
+[videos] => stdClass Object ( 
 	[low_resolution] => stdClass Object (
 		 [url] => http://distilleryimage3.s3.amazonaws.com/f3ad1bd07e3211e393c612ea443118ff_102.mp4 
 		 [width] => 480
@@ -14,7 +15,8 @@ array(1) { [0]=> object(stdClass)#3 (2) { ["meta"]=> object(stdClass)#4 (1)
 		) 
 [tags] => Array ( ) 
 [type] => video 
-[location] => [comments] => stdClass Object ( 
+[location] => 
+[comments] => stdClass Object ( 
 	[count] => 2 
 	[data] => Array ( 
 		[0] => stdClass Object ( 
@@ -94,22 +96,3 @@ array(1) { [0]=> object(stdClass)#3 (2) { ["meta"]=> object(stdClass)#4 (1)
 	[id] => 5099080 ) ) ) )
 
 
-	INSTAGRAM
-
-	-Time ago post was published, need to make function that says if below an hour ago use mintes if more than an hour use hours
-	-# of likes
-	-comments
-	-ability to like
-	-ability to comment
-	-emojis
-
-	FACEBOOK
-
-	-emojis
-	-time ago was posted
-	-
-
-	TWITTER
-	-wont let you register an app for oAuth with out websitethat has ".com" after it localhost/ wont work
-
-	VINE

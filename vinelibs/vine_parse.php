@@ -3,7 +3,6 @@ if (isset ($_SESSION['vine_key']) && isset($_SESSION['vine_userid'])){
 $vine = new Vine;
 $key = $_SESSION['vine_key'];
 $records = $vine->vineTimeline($key);
-
 foreach($records['data']['records'] as $vines){
   if(isset($vines['repost']['username']))
   {
@@ -16,7 +15,7 @@ foreach($records['data']['records'] as $vines){
   $revines = $vines['reposts']['count'];
   $num_comments = $vines['comments']['count'];
   $postId = $vines['postIdStr'];
-
+  $video_thumb = $vines['thumbnailUrl'];
  #####START TO PRINT STUFF OUT HERE ###### 
 echo "<div id='vinepost' data='$postId'>";
 if(isset($poster_if_revined)){
@@ -29,7 +28,7 @@ echo $original_poster_username;
 echo "<br/>";
 $video = $vines['videoUrl'];
                                
-echo "<video width='350' height='350' controls loop>
+echo "<video poster='$video_thumb' width='350' preload='none' height='350' controls loop>
 <source src='$video'>
 <object data='$video' width='350' height='350'></object>
 </video>";
@@ -61,20 +60,27 @@ if(!empty($num_comments)){
   }
 }
     echo "<br/>";
-    echo "<button type='button' id='ajaxcommentbutton1' class='1' data='1' onclick='loadVineComments()'>Load previous comments</button>";
+    echo "<button type='button' class='ajaxcommentbutton1' group='$postId' data='2'>Load previous comments</button>";
     echo "<br/>";
-    echo "<div id='commentsContainer'></div>";
-    foreach($vines['comments']['records'] as $actual_comments){
+    echo "<div class='commentsContainer'>";
+    echo "<div class='1'>";
+     $vineI=0;
+    while($vineI < 6){
+      if(isset($vines['comments']['records'][$vineI])){
+      $actual_comments = $vines['comments']['records'][$vineI];
       $comment_profile_img = $actual_comments['avatarUrl'];
       $comment_poster_username = $actual_comments['username'];
       $the_comment = $actual_comments['comment'];
+
       echo "<br/>";
       echo "<img src='$comment_profile_img' height = 15px width = 15px>'";
       echo $comment_poster_username;
-      echo $the_comment;
+      echo ' ' . $the_comment;
+    }
+      $vineI++;
     }
 
-    echo "</div><br/>";echo "<br/>";
+    echo "</div></div></div><br/>";echo "<br/>";
 }
 
 }#End If isset

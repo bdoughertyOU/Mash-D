@@ -5,8 +5,12 @@ $access_token = $_SESSION['access_token'];
 $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
 $method = 'statuses/home_timeline';
 $the_response = $connection->get($method);
-
 foreach ($the_response as $twitter){
+  $poster_id = $twitter->user->screen_name;
+  $post_id = $twitter->id_str;
+  $method =$poster_id . '/status/' . $post_id;
+$the_comments = $connection->get($method);
+ echo "<div class='twitterPost' data-id='$post_id'>";
     if (isset($twitter->retweeted_status)){
       $img = $twitter->retweeted_status->user->profile_image_url;
       $retweeter = $twitter->user->name;
@@ -41,7 +45,7 @@ foreach ($the_response as $twitter){
       if(isset($twitter->entities->media)){
         foreach($twitter->entities->media as $the_media){
           $some_media = $the_media->media_url;
-          echo "<img src='$some_media'>";
+          echo "<img src='$some_media'><br/>";
         } 
       }
     }else{
@@ -75,13 +79,17 @@ foreach ($the_response as $twitter){
       if(isset($twitter->entities->media)){
         foreach($twitter->entities->media as $the_media){
           $some_media = $the_media->media_url;
-          echo "<img src='$some_media'>";
+          echo "<img src='$some_media'><br/>";
         } 
       }
     }
-    echo "<br/>";
-    print_r($twitter);
+    $num_retweets = $twitter->retweet_count;
+    $num_favorites = $twitter->favorite_count;
+    echo "Retweets " . $num_retweets . " Favorites " . $num_favorites;
+    echo "<br/><div class='twitterCommentContainer'></div><br/>";
+    echo "<button class='twitterComments' data='$poster_id' data-id='$post_id'>Expand Comments</button>";
     echo "<br/><br/>";
+    echo "</div>";
   }
 }
 ?>

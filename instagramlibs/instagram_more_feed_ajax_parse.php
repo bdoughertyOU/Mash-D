@@ -1,8 +1,4 @@
-<?php if (isset($ig_username)): ?> 
- <img src="instagramlibs/example/assets/instagram.png" alt="Instagram logo">
-        <h1><span><?php echo $ig_username->data->username ?></span>'s Instagram feed</h1>
-      <?php #print_r($result);?>
-        <?php
+<?php
           foreach ($result->data as $media) {
             $postId = $media->id;
             echo "<div class='instagramPost' group='$postId'>";
@@ -79,4 +75,3 @@
             //echo "<br/><br/>";
           }
         ?>
-        <?php endif ?>
