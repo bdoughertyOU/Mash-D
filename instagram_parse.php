@@ -1,10 +1,12 @@
 <?php if (isset($ig_username)): ?> 
- <img src="instagramlibs/example/assets/instagram.png" alt="Instagram logo">
-        <h1><span><?php echo $ig_username->data->username ?></span>'s Instagram feed</h1>
+<!-- <img src="instagramlibs/example/assets/instagram.png" alt="Instagram logo">
+        <h1><span><?php echo $ig_username->data->username ?></span>'s Instagram feed</h1>-->
       <?php #print_r($result);?>
         <?php
           foreach ($result->data as $media) {
             $postId = $media->id;
+            $igCreated = $media->created_time;
+            echo "<div timestamp='$igCreated'>";
             echo "<div class='instagramPost' group='$postId'>";
             $profilepic = $media->user->profile_picture;
             $igposter = $media->user->username;
@@ -18,8 +20,9 @@
             echo strftime("%r", $diff);
 
             #echo strftime('%t', ($created_time));
-            echo "<img src ='$profilepic' width='55' height='55'/>";
-            echo $igposter;
+            echo "<div class='igAvatar'><img src ='$profilepic' width='55' height='55'/>";
+            echo $igposter . "</div>";
+            echo "<div class='iglogo'><img src='images/instagramlogo.gif' height='60px' width='140'/></div>";
             echo "<br/>";
             if(isset($media->location->name)){
               $location = $media->location->name;
@@ -37,7 +40,7 @@
                            </video><br/>";
             } else {
               // image
-              $image = $media->images->low_resolution->url;
+              $image = $media->images->standard_resolution->url;
               echo "<img class=\"media\" src=\"{$image}\"/><br/>";
             }
             
@@ -69,12 +72,12 @@
                 }
                 echo "</div>";
                 if($media->comments->count > 5){
-                  echo "<button class='instaComments' group='$postId' data='9'>Load previous comments</button>";
+                  echo "<button class='instaComments radius' group='$postId' data='9'>Load comments</button>";
                 }
                 echo "</div>";
               }
 
-            echo "</div><br/>";
+            echo "</div><hr></div>";
             //print_r($media);
             //echo "<br/><br/>";
           }

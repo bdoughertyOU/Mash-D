@@ -13,8 +13,19 @@ include 'vinelibs/vine.php';
 <title>My Account</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<link href="styles.css" rel="stylesheet" type="text/css">
+<!--<link href="styles.css" rel="stylesheet" type="text/css">-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link href="css/foundation.min.css" rel="stylesheet" type="text/css">
+<link href="css/normalize.css" rel="stylesheet" type="text/css">
+<script src="js/foundation.min.js"></script>
+<script src="js/foundation.tooltip.js"></script>
+<script src="js/modernizr.js"></script>
+<link rel="stylesheet" href="css/main.css" />
+<script>
+  $(function(){
+    $(document).foundation();    
+  })
+</script>
 <script>
 
 
@@ -90,66 +101,108 @@ $(document).on('click', '.twitterComments', function() {
 
 
 </script>
+
 </head>
 
 <body>
 <section>
-<?php 
+<ul class="left options">
+  <a href="#" data-dropdown="drop2" class="small radius button dropdown">Account</a><br>
+  <ul id="drop2" class="f-dropdown" data-dropdown-content>
+  <li><a href="mysettings.php">Settings</a></li>
+  <li><a href="social.php">Social Accounts</a></li>
+  </ul> 
+</ul>
+<ul class="right logout">
+  <a href="logout.php" data-tooltip class="has-tip tip-bottom small radius button " title='See ya!'>Logout</a>
+</ul>
+
+     <h3 id="mashdUser">Mash'D</h3>
+ 
+
+<!--<?php 
+if (isset($_SESSION['user_id'])){
+
 /*********************** MYACCOUNT MENU ****************************
 This code shows my account menu only to logged in users. 
 Copy this code till END and place it in a new html or php where
 you want to show myaccount options. This is only visible to logged in users
 *******************************************************************/
-if (isset($_SESSION['user_id'])) {?>
-<div class="myaccount">
-  <p><strong>My Account</strong></p>
-  <a href="####">#####</a><br>
-  <a href="mysettings.php">Settings</a><br>
-    <a href="logout.php">Logout </a><br>
-     <a href="social.php">Social Accounts</a>
-	
-  <p>You can add more links here for users</p></div>
-<?php }
-if (checkAdmin()) {
-/*******************************END**************************/
+$mashdUser = $_SESSION['user_name'];
+  }
+  # echo "Welcome $mashdUser";
 ?>
-      <p> <a href="account/admin.php">Admin CP </a></p>
-	  <?php } ?>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      </section>
-    <section>
-      <h3 class="titlehdr">Welcome <?php echo $_SESSION['user_name'];?></h3>  
-	  <?php	
-      if (isset($_GET['msg'])) {
-	  echo "<div class=\"error\">$_GET[msg]</div>";
-	  }
-
-	  	  
-	  ?>
    <pre><?php #print_r($_SESSION); ?><br/>
-    <?php #print_r($_COOKIE); ?></pre>
-<div class="myDiv" data="1">
-<!--##############################################################################-->  
-<!--###########################FaceBook Inject####################################--> 
-<?php include 'facebook_parse.php';?> 
+    <?php #print_r($_COOKIE); ?></pre>-->
+<div class="row myDiv" data="1">
+  <div class="large-8 large-centered columns mainContainer">
+  <div class="button-bar secondNav">
 
-<!--##############################################################################-->  
-<!--###########################Instagram Inject###################################--> 
-<?php #include 'instagram_parse.php';?>
+    <ul class="button-group radius">
+      <li><a href="#" class="tiny small large button">Facebook</a></li>
+      <li><a href="#" class="tiny small large button">Twitter</a></li>
+      <li><a href="#" class="tiny small large button">Instagram</a></li>
+      <li><a href="#" class="tiny small large button">Vine</a></li>
+    </ul>
+  </div>
+  <div id="pic1"></div>
+    <div class="brandon">
+  <?php 
+    include 'mashd.class.php'; 
 
-<!--##############################################################################-->  
-<!--###########################Twitter Inject#####################################--> 
-<?php #include 'twitter_parse.php';?>
+    if(isset($_SESSION['vine_userid'])||isset($_SESSION['access_token'])||isset($_SESSION['instagram'])||isset($user_id))
+    {
+  ##############################################################################-->  
+    ###########################Vine Inject#####################################--> 
+     include 'vinelibs/vine_parse.php';  
+    ##############################################################################-->  
+    ###########################FaceBook Inject####################################--> 
+    include 'facebook_parse.php'; 
+    ##############################################################################-->  
+    ###########################Instagram Inject###################################--> 
+    include 'instagram_parse.php';
 
-<!--##############################################################################-->  
-<!--###########################Vine Inject#####################################--> 
-<?php #include 'vinelibs/vine_parse.php';  ?>
+    ##############################################################################-->  
+    ###########################Twitter Inject#####################################--> 
+    #include 'twitter_parse.php';
+    #echo "<button type='button' class='loadMoreFeed'>Request data</button>";
+  }else{
+    echo "<div class='pleaseLogIn'>Please Log into one of your Social accounts!</div>";
+  }
+  ?>
+
+    
+    </div>
+  </div>
 </div>
   </section>
+<script>
+$(window).load(function(){
+//alert("(window).load was called - window is loaded!");
+$('#pic1').hide();
+$('.brandon').show();
+// get array of elements
+var myArray = $(".brandon > div");
+var count = 0;
 
-<button type="button" class="loadMoreFeed">Request data</button>
-
+// sort based on timestamp attribute
+myArray.sort(function (a, b) {
+    
+    // convert to integers from strings
+    a = parseInt($(a).attr("timestamp"));
+    b = parseInt($(b).attr("timestamp"));
+    count += 2;
+    // compare
+    if(a < b) {
+        return 1;
+    } else if(a > b) {
+        return -1;
+    } else {
+        return 0;
+    }
+});
+// put sorted results back on page
+$(".mainContainer").append(myArray);
+});</script>
 </body>
 </html>

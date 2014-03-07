@@ -1,89 +1,61 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <title>Members Login</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<script language="JavaScript" type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="js/jquery.validate.js"></script>
-  <script>
-  $(document).ready(function(){
-    $("#logForm").validate();
-  });
-  </script>
-<link href="styles.css" rel="stylesheet" type="text/css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
 
-<?php include 'dbc.php'; ?>
+</script>
+<link href="css/foundation.min.css" rel="stylesheet" type="text/css">
+<link href="css/normalize.css" rel="stylesheet" type="text/css">
+<script src="js/foundation.min.js"></script>
+<script src="js/foundation.tooltip.js"></script>
+<script src="js/modernizr.js"></script>
+<link rel="stylesheet" href="css/main.css" />
+<script>
+  $(function(){
+    $(document).foundation();    
+  })
+</script>
 
 </head>
 
 <body>
-<table width="100%" border="0" cellspacing="0" cellpadding="5" class="main">
-  <tr> 
-    <td colspan="3">&nbsp;</td>
-  </tr>
-  <tr> 
-    <td width="160" valign="top"><p>&nbsp;</p>
-      <p>&nbsp; </p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p></td>
-    <td width="732" valign="top"><p>&nbsp;</p>
-      <h3 class="titlehdr">Login Users 
-      </h3>  
-	  <p>
-	  <?php
-	  if(!empty($err))  {
-	   echo "<div class=\"msg\">";
-	  foreach ($err as $e) {
-	    echo "$e <br>";
-	    }
-	  echo "</div>";	
-	   }
-	     ?></p>
-      <form action="login.php" method="post" name="logForm" id="logForm" >
-        <table width="65%" border="0" cellpadding="4" cellspacing="4" class="loginform">
-          <tr> 
-            <td colspan="2">&nbsp;</td>
-          </tr>
-          <tr> 
-            <td width="28%">Username / Email</td>
-            <td width="72%"><input name="usr_email" type="text" class="required" id="txtbox" size="25"></td>
-          </tr>
-          <tr> 
-            <td>Password</td>
-            <td><input name="pwd" type="password" class="required password" id="txtbox" size="25"></td>
-          </tr>
-          <tr> 
-            <td colspan="2"><div align="center">
-                <input name="remember" type="checkbox" id="remember" value="1">
-                Remember me</div></td>
-          </tr>
-          <tr> 
-            <td colspan="2"> <div align="center"> 
-                <p> 
-                  <input name="doLogin" type="submit" id="doLogin3" value="Login">
-                </p>
-                <p><a href="register.php">Register Free</a><font color="#FF6600"> 
-                  |</font> <a href="forgot.php">Forgot Password</a> <font color="#FF6600"> 
-                  </font></p>
-              </div></td>
-          </tr>
-        </table>
-        <div align="center"></div>
-        <p align="center">&nbsp; </p>
-      </form>
-      <p>&nbsp;</p>
-	   
-      </td>
-    <td width="196" valign="top">&nbsp;</td>
-  </tr>
-  <tr> 
-    <td colspan="3">&nbsp;</td>
-  </tr>
-</table>
-
+<div class="row">
+<div class="large-12 columns" style="height:30px;"></div>
+</div>
+    <div class="row">
+      <div class="large-5 large-centered columns">
+        <h1 id ="mashd"><span data-tooltip class="has-tip tip-left radius" title="<span style='font-size:1.2em;'><b>facebook</span>" >M</span><span data-tooltip class="has-tip tip-top radius" title="<span style='font-size:1.2em;color:#2daddc;'><b>Twitter</span>" >a</span><span data-tooltip class="has-tip radius" title="<span style='font-size:1.3em;'><b><span style='color:#DA1421;'>I</span><span style='color:#DFB405;'>n</span><span style='color:#6BB47D;'>s</span><span style='color:#407EE5;'>t</span><span style='color:#D9AB73;'>a</span>gram</span>">s</span><span data-tooltip class="has-tip tip-top radius" title="<span style='font-size:1.3em;color:#00bf8f;'><b>Vine</span>">h</span><span data-tooltip class="has-tip tip-right radius" title="<span style='font-size:1.3em;'><b>Whats Next?</span>">'D</span>
+        </h1>
+      </div>  
+    </div>
+        <div class="row">
+          <div class="large-3 large-centered columns">
+            <form action="login.php" method="post" name="logForm" id="logForm" >
+            <input name="usr_email" type="text" placeholder="username" class="required" id="txtbox" size="25">
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-3 large-centered columns">
+            <input name="pwd" type="password" placeholder="password" class="required password" id="txtbox" size="25">
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-3 large-centered columns">
+            <button class="round button expand" name="doLogin" value="Login"type="submit" id="doLogin3">Login</button>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-3 large-centered columns">
+          <a href="register.php">Register-</a>
+          <a href="forgot.php">Forgot Password</a> 
+        </div>
+       </div>
 </body>
 </html>
 

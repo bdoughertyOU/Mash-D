@@ -1,0 +1,101 @@
+.has-tip, .has-tip:hover{
+	color: #333;
+	border-bottom: none;
+	cursor: pointer;
+}
+.button.radius{
+	color:white;
+	margin-bottom: 0;
+}
+.secondNav{
+	height: 40px;
+	margin-left: 28%;
+}
+
+#mashd{
+	margin: 0.67em 0 0 0;
+	font-size: 5em;
+	text-align: center;
+
+}
+#mashdUser{
+	text-align: center;
+	line-height: 2;
+	font-weight: 800;
+	margin: 0;
+	height: 45px;
+}
+ul{
+	margin-left: 0;
+}
+.fbPost{
+	background-color: #f7f7f9;
+padding: 10px;
+border-radius: 10px;
+border:2px solid rgb(238, 241, 241);
+}
+#vinepost{
+	background-color: rgba(40, 226, 77, 0.29);
+padding: 10px;
+border-radius: 10px;
+border:2px solid #00bf8f;;
+}
+.vineTime{
+	float: right;
+margin: 3%;
+}
+.vineUsername{
+	margin-left: 1%;
+}
+.vineAvatar{
+	border-radius: 50%;
+}
+.revined{
+	display: block;
+	height: 5px;
+	width: 200px;
+}
+.instagramPost{
+	background-color: #FFFFFF;
+padding: 10px;
+border-radius: 10px;
+border:2px solid rgb(238, 241, 241);
+}
+.igAvatar{
+	float: left;
+	width:200px;
+	margin: 1%
+}
+.iglogo{
+	float:right;
+}
+.instaComments{
+	width: 100px;
+	height: 22px;
+	font-size: 13px;
+	padding: 0;
+}
+hr{
+	margin: 10px;
+}
+ul,a{
+	margin-bottom: 0;
+}
+
+.brandon{
+	display: none;
+	clear: both;
+}
+#pic1
+{
+   content: url(../images/loader.gif);
+   height: 200px;
+   width: 200px;
+   margin: 0 auto;
+}
+.pleaseLogIn{
+	background-color: #f7f7f9;
+padding: 10px;
+border-radius: 10px;
+border:2px solid rgb(238, 241, 241);
+}
