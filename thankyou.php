@@ -22,7 +22,7 @@
       <h4>Your registration is now complete!</h4>
       <p><font size="2" face="Arial, Helvetica, sans-serif">An activation email 
         has been sent to your email address (dont forget to check your spam folder). 
-        Please check your email and click on the activation link. You can <a href="../index.php">login 
+        Please check your email and click on the activation link. You can <a href="../index.html">login 
         here</a> if you have already activated your account.</font></p>
       <p>&nbsp;</p>
 	   
