@@ -136,15 +136,7 @@ $mashdUser = $_SESSION['user_name'];
     <?php #print_r($_COOKIE); ?></pre>-->
 <div class="row myDiv" data="1">
   <div class="large-8 large-centered columns mainContainer">
-  <div class="button-bar secondNav">
-
-    <ul class="button-group radius">
-      <li><a href="#" class="tiny small large button">Facebook</a></li>
-      <li><a href="#" class="tiny small large button">Twitter</a></li>
-      <li><a href="#" class="tiny small large button">Instagram</a></li>
-      <li><a href="#" class="tiny small large button">Vine</a></li>
-    </ul>
-  </div>
+  
   <div id="pic1"></div>
     <div class="brandon">
   <?php 
@@ -204,5 +196,14 @@ myArray.sort(function (a, b) {
 // put sorted results back on page
 $(".mainContainer").append(myArray);
 });</script>
+<div class="button-bar secondNav fixed">
+
+    <ul class="button-group radius">
+      <li><a href="#" class="tiny small large button">Facebook</a></li>
+      <li><a href="#" class="tiny small large button">Twitter</a></li>
+      <li><a href="#" class="tiny small large button">Instagram</a></li>
+      <li><a href="#" class="tiny small large button">Vine</a></li>
+    </ul>
+  </div>
 </body>
 </html>

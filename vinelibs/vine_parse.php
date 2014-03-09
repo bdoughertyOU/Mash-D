@@ -59,9 +59,9 @@ echo "<span class='vineTime'>" . $the_time . "</span>";
 echo "<br/>";
 $video = $vines['videoUrl'];
                                
-echo "<video style='margin: 1% 6% 1% 6%;' poster='$video_thumb' width='536' preload='none' height='536' controls loop>
+echo "<video style='margin: 1% 0% 1% 0%;' poster='$video_thumb' width='420px' preload='none' height='420' controls loop>
 <source src='$video'>
-<object data='$video' width='536' height='536'></object>
+<object data='$video' width='420' height='420'></object>
 </video>";
 echo "<br/>";
 echo $description;

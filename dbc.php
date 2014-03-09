@@ -89,7 +89,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['user_name']) )
 	   }
 
   } else {
-	header("Location: index.html");
+	header("Location: index.php");
 	exit();
 	}
 }
@@ -243,7 +243,7 @@ setcookie("user_id", '', time()-60*60*24*COOKIE_TIME_OUT, "/");
 setcookie("user_name", '', time()-60*60*24*COOKIE_TIME_OUT, "/");
 setcookie("user_key", '', time()-60*60*24*COOKIE_TIME_OUT, "/");
 
-header("Location: index.html");
+header("Location: index.php");
 }
 
 // Password and salt generation

@@ -4,18 +4,11 @@ include 'dbc.php';
 
 $err = array();
 
-foreach($_GET as $key => $value) {
-	$get[$key] = filter($value); //get variables are filtered.
-}
-
-if ($_POST['doLogin']=='Login')
-{
 
 foreach($_POST as $key => $value) {
 	$data[$key] = filter($value); // post variables are filtered
 }
-
-
+//var_dump($_POST);
 $user_email = $data['usr_email'];
 $pass = $data['pwd'];
 
@@ -42,7 +35,7 @@ $num = mysql_num_rows($result);
 	if(!$approved) {
 	//$msg = urlencode("Account not activated. Please check your email for activation code");
 	$err[] = "Account not activated. Please check your email for activation code";
-	
+	return json_encode($err);
 	//header("Location: login.php?msg=$msg");
 	 //exit();
 	 }
@@ -68,24 +61,29 @@ $num = mysql_num_rows($result);
 		
 		//set a cookie 
 		
-	   if(isset($_POST['remember'])){
+	   /*if(isset($_POST['remember'])){
 				  setcookie("user_id", $_SESSION['user_id'], time()+60*60*24*COOKIE_TIME_OUT, "/");
 				  setcookie("user_key", sha1($ckey), time()+60*60*24*COOKIE_TIME_OUT, "/");
 				  setcookie("user_name",$_SESSION['user_name'], time()+60*60*24*COOKIE_TIME_OUT, "/");
-				   }
-		  header("Location: myaccount.php");
+		}*/
+			
+		echo "1";
 		 }
 		}
 		else
 		{
 		//$msg = urlencode("Invalid Login. Please try again with correct user email and password. ");
 		$err[] = "Invalid Login. Please try again with correct user email and password.";
+		return json_encode($err);
+		  var_dump($access);
 		//header("Location: login.php?msg=$msg");
 		}
 	} else {
 		$err[] = "Error - Invalid login. No such user exists";
+		return json_encode($err);
+
 	  }		
-}
+
 					 
 					 
 
