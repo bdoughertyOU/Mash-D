@@ -4,13 +4,14 @@ include 'dbc.php';
 
 $err = array();
 
+$incoming = json_decode(file_get_contents('php://input'));
 
-foreach($_POST as $key => $value) {
+foreach($incoming as $key => $value) {
 	$data[$key] = filter($value); // post variables are filtered
 }
 //var_dump($_POST);
-$user_email = $data['usr_email'];
-$pass = $data['pwd'];
+$user_email = $data['username'];
+$pass = $data['password'];
 
 
 if (strpos($user_email,'@') === false) {

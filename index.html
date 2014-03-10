@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<script src="phonegap.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<link href="css/foundation.min.css" rel="stylesheet" type="text/css">
-		<link href="css/normalize.css" rel="stylesheet" type="text/css">
-		<script src="js/foundation.min.js"></script>
-		<script src="js/foundation.tooltip.js"></script>
-		<script src="js/modernizr.js"></script>
-		<link rel="stylesheet" href="css/main.css" />
-	</head>
-	<body>
-	<script>
-		document.location = 'http://10.0.2.2/mashd/Mash-D/index.php';
-	</script>
-	</body>
+<html lang="en" ng-app="app">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Angular stuff</title>
+	<!--<link rel="stylesheet" href="app/css/style.css">-->
+	<script src="vendor/js/angular.js"></script>
+	<script src="vendor/js/angular-route.js"></script>
+	<script src="vendor/js/angular-ui-router.js"></script>
+	<script src="app/js/app.js"></script>
+	<!--<script src="phonegap.js"></script>-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<link href="css/foundation.min.css" rel="stylesheet" type="text/css">
+	<script src="js/foundation.min.js"></script>
+	<script src="js/foundation.tooltip.js"></script>
+	<script src="js/modernizr.js"></script>
+	<link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+	<div class="row">
+		<div class="large-12">
+		<div id="view" ui-view></div>
+		</div>
+	</div>
+</body>
 </html>

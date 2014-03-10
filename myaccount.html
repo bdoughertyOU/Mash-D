@@ -1,0 +1,49 @@
+<div class="design myaccount">
+<section>
+<ul class="left options">
+  <a data-dropdown="drop2" class="small radius button dropdown">Account</a><br>
+  <ul id="drop2" class="f-dropdown" data-dropdown-content>
+  <li><a href="mysettings.php">Settings</a></li>
+  <li><a ui-sref="social">Social Accounts</a></li>
+  </ul> 
+</ul>
+<ul class="right logout">
+  <a href="logout.php" data-tooltip class="has-tip tip-bottom small radius button " title='See ya!'>Logout</a>
+</ul>
+
+     <h3 id="mashdUser">Mash'D</h3>
+ 
+
+<!--<?php 
+if (isset($_SESSION['user_id'])){
+
+/*********************** MYACCOUNT MENU ****************************
+This code shows my account menu only to logged in users. 
+Copy this code till END and place it in a new html or php where
+you want to show myaccount options. This is only visible to logged in users
+*******************************************************************/
+$mashdUser = $_SESSION['user_name'];
+  }
+  # echo "Welcome $mashdUser";
+?>
+   <pre><?php #print_r($_SESSION); ?><br/>
+    <?php #print_r($_COOKIE); ?></pre>-->
+<div class="row myDiv" data="1">
+  <div class="large-8 large-centered columns mainContainer">
+  
+    <div id="pic1"></div>
+    <div class="brandon"></div>
+  </div>
+</div>
+  </section>
+  <div class="button-bar secondNav fixed">
+
+        <ul class="button-group radius">
+          <li><span class="faceBookToggle tiny small large button">Fb</span></li>
+          <li><span class="twitterToggle tiny small large button">Tw</span></li>
+          <li><span class="instaToggle tiny small large button">IG</span></li>
+          <li><span class="vineToggle tiny small large button">Vi</span></li>
+        </ul>
+      </div>
+</div>
+

@@ -5,27 +5,7 @@ include 'facebooklibs/auth.php';
 include 'instagramlibs/instagramAuth.php';
 include 'twitterlibs/twitterauth.php';
 ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Social logins</title>
-    <style>
-      body {
-        font-family: 'Lucida Grande', Verdana, Arial, sans-serif;
-      }
-      h1 a {
-        text-decoration: none;
-        color: #3b5998;
-      }
-      h1 a:hover {
-        text-decoration: underline;
-      }
-    </style>
-</head>
-  <body>
-    <a href="myaccount.php">My Account</a><br/><br/><br/><br/>
+    <a ui-sref="myaccount">My Account</a><br/><br/><br/><br/>
     <!--<pre><?php print_r($_SESSION); ?><br/>
     <?php print_r($_COOKIE); ?></pre>-->
     <!--facebook stuff -->
@@ -78,5 +58,4 @@ include 'twitterlibs/twitterauth.php';
     <!--End Vine Stuff -->
 
     <p><a href="#">Reddit Login</a></p>
-  </body>
-</html>
+ 

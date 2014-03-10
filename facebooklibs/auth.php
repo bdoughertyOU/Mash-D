@@ -3,7 +3,7 @@
 	
 	$facebook = new Facebook(array(
   'appId'  => '464235817026185',
-  'secret' => 'cc0dfb735ef12d40c59dc83fa7493efd',
+  'secret' => 'cc0dfb735ef12d40c59dc83fa7493efd'
 ));
 
 // Get User ID
@@ -30,8 +30,9 @@ if ($user) {
   $logoutUrl = $facebook->getLogoutUrl();
 } else {
   $statusUrl = $facebook->getLoginStatusUrl();
-  $loginUrl = $facebook->getLoginUrl(array(
-  	'scope' => 'read_stream,read_friendlists'
+  $loginUrl = $facebook->getLoginUrl($params=array(
+  	'scope' => 'read_stream,read_friendlists',
+    'redirect_uri' => 'http://localhost/mashd/mash-d/fbredirect.php'
   ));
 }
 

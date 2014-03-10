@@ -31,6 +31,6 @@ $_SESSION['vine_key']= $key;
 $_SESSION['vine_userid'] = $userId;
 
 
-header("Location: http://localhost/mashd/Mash-D/social.php")
+header("Location: http://localhost/mashd/Mash-D/#/social");
 
 ?>

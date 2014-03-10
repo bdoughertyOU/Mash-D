@@ -9,7 +9,9 @@ foreach ($the_response as $twitter){
   $poster_id = $twitter->user->screen_name;
   $post_id = $twitter->id_str;
   $method =$poster_id . '/status/' . $post_id;
+$twitterCreated = strtotime($twitter->created_at);
 $the_comments = $connection->get($method);
+echo "<div timestamp='$twitterCreated'>";
  echo "<div class='twitterPost' data-id='$post_id'>";
     if (isset($twitter->retweeted_status)){
       $img = $twitter->retweeted_status->user->profile_image_url;
@@ -89,7 +91,7 @@ $the_comments = $connection->get($method);
     echo "<br/><div class='twitterCommentContainer'></div><br/>";
     echo "<button class='twitterComments' data='$poster_id' data-id='$post_id'>Expand Comments</button>";
     echo "<br/><br/>";
-    echo "</div>";
+    echo "</div></div>";
   }
 }
 ?>

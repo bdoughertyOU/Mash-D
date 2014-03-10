@@ -4,7 +4,7 @@
 	INSTAGRAM
 
 	-Time ago post was published, need to make function that says if below an hour ago use mintes if more than an hour use hours
-	-comments ajax is returning weird set of comments, out of order and such.
+	-comments ajax is hard coded to one post id make this dynamic
 	-ability to like
 	-ability to comment
 	
@@ -28,7 +28,6 @@
 
 	VINE
 	-ajax comment retriever add max amount so that once there is no more comments to get the button either disappears or does nothing.
-	-time converted to time ago
 	-POST features such as like,revine,twitter,fb
 	-post your own comment
 

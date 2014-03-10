@@ -8,10 +8,12 @@
 	margin-bottom: 0;
 }
 .secondNav{
-	height: 40px;
-	margin-left: 28%;
-	margin-top: 648px;
-	font-size: 1.4em;
+	height: 54px;
+	margin: 0 auto;
+}
+.secondNav .button{
+	font-size: 1.9em;
+	padding: 10px 23px;
 }
 #mashd{
 	margin: 0.67em 0 0 0;
@@ -27,7 +29,10 @@
 	height: 45px;
 }
 ul{
-	margin-left: 0;
+	margin: 0;
+}
+.button-bar .button-group {
+	margin: 0;
 }
 .fbPost{
 	background-color: #f7f7f9;
@@ -35,7 +40,7 @@ padding: 10px;
 border-radius: 10px;
 border:2px solid rgb(238, 241, 241);
 }
-#vinepost{
+.vinepost{
 	background-color: rgba(40, 226, 77, 0.29);
 padding: 10px;
 border-radius: 10px;
@@ -82,6 +87,7 @@ hr{
 ul,a{
 	margin-bottom: 0;
 }
+
 
 .brandon{
 	display: none;
