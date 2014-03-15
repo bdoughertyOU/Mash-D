@@ -38,8 +38,8 @@ foreach ($comments->statuses as $post_comment){
 		$username = $post_comment->user->screen_name;
 		$img = $post_comment->user->profile_image_url;
 		echo "<br/>";
-		echo "<img src='$img'/>";
-		echo $name . ' ' . $username . '<br/>';
+		echo "<img src='$img' style='border-radius: 10%;/><span class='twitterUserName'>";
+		echo $name . "</span><span class='twitterRealName'> @" . $username . '</span><br/>';
 		echo $the_comment;
 		echo "<br/><br/>";
 	}

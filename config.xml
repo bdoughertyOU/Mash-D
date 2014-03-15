@@ -3,8 +3,6 @@
     xmlns:android   = "http://schemas.android.com/apk/res/android"
     id              = "com.lumberg.greeeaaat"
     version         = "1.0.0">
-    <gap:plugin name="com.dawsonloudon.videoplayer" />
     <access origin="*" />
-    <access origin="http://10.0.2.2/mashd/Mash-D/index.php" />
-    <content src="index.html" />
+    <access origin="http://localhost/mashd/Mash-D/#/index.html" />
 </widget>

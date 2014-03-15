@@ -37,7 +37,7 @@ function vineAuth($username,$password)
 function vineTimeline($key)
 {
         // Additional endpoints available from https://github.com/starlock/vino/wiki/API-Reference
-        $url = "https://api.vineapp.com/timelines/graph";
+        $url = "https://api.vineapp.com/timelines/graph?size=10";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -63,7 +63,7 @@ function vineTimeline($key)
 }
 
 function nextSetofTimelines($key,$page){
-    $url = "https://api.vineapp.com/timelines/graph?page=" . $page;
+    $url = "https://api.vineapp.com/timelines/graph?page=" . $page . "&size=10";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

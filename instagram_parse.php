@@ -6,54 +6,50 @@
           foreach ($result->data as $media) {
             $postId = $media->id;
             $igCreated = $media->created_time;
-            echo "<div timestamp='$igCreated'>";
+            echo "<div timestamp='$igCreated' class='stickem-container'>";
             echo "<div class='instagramPost' group='$postId'>";
             $profilepic = $media->user->profile_picture;
             $igposter = $media->user->username;
-            $created_time = $media->created_time;
-            $diff = (time() - ($created_time));
+            $created_time = time_elapsed_string($igCreated);
             if(isset($media->location) && isset($media->location->name)){
               $location = $media->location->name;
             }
-            #echo $created_time;
-            #echo $diff;
-            echo strftime("%r", $diff);
-
-            #echo strftime('%t', ($created_time));
-            echo "<div class='igAvatar'><img src ='$profilepic' width='55' height='55'/>";
-            echo $igposter . "</div>";
-            echo "<div class='iglogo'><img src='images/instagramlogo.gif' height='60px' width='140'/></div>";
+            echo "<div class='stickem'><div class='igAvatar'><img src ='$profilepic' width='55' height='55'/>";
+            echo "<span class='instagramUserName'>" . $igposter . "</span><span class='instagramTime'>" . $created_time . "</span></div></div>";
             echo "<br/>";
-            if(isset($media->location->name)){
+            /*if(isset($media->location->name)){
               $location = $media->location->name;
               echo $location;
               echo "<br/>";
-            }
+            }*/
             // output media
             if ($media->type === 'video') {
               // video
               $poster = $media->images->low_resolution->url;
               $source = $media->videos->standard_resolution->url;
-              echo "<video  width=\"250\" height=\"250\" controls>
+              echo "<div><video  width=\"250\" height=\"250\" controls>
                              <source src=\"{$source}\" type=\"video/mp4\" />
                              <object data=\"{$source}\" width=\"250\" height=\"250\"></object>
-                           </video><br/>";
+                           </video></div>";
             } else {
               // image
               $image = $media->images->standard_resolution->url;
-              echo "<img class=\"media\" src=\"{$image}\"/><br/>";
+              echo "<div><img class=\"media\" src=\"{$image}\"/></div>";
             }
             
             // create meta section
             
             if(!empty($media->caption->text)){
-           echo "<div class=\"content\">
-                           <div class=\"comment\">{$media->caption->text}</div>
-                         </div>";
+           echo "<div class='comment'><span class='instaCommentUserName'>$igposter</span> {$media->caption->text}</div>";
             }
             $likes = $media->likes->count;
-            echo "Likes " . $likes;
-            echo "<br/>";
+            if(isset($media->comments)){
+              $num_of_comments = $media->comments->count;
+            }else{
+              $num_of_comments = '0';}
+            echo "<div>Likes " . $likes . " - Comments " . $num_of_comments;
+            echo "</div>";
+            echo "<div><textarea rows='1' name='instagramComment' class='instagramComment' title='Write a comment...' placeholder='Write a comment...' style='height: 10px;' >Write a comment..</textarea>";
             if(!empty($media->comments->data)){
               echo "<div class='commentsContainer'>";
               echo "<div class='1'>";
@@ -77,7 +73,7 @@
                 echo "</div>";
               }
 
-            echo "</div><hr></div>";
+            echo "</div></div></div>";
             //print_r($media);
             //echo "<br/><br/>";
           }

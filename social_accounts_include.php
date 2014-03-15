@@ -6,6 +6,34 @@ include 'twitterlibs/twitterauth.php';
 include 'vinelibs/vine.php';
 
     include 'mashd.class.php'; 
+function time_elapsed_string($ptime)
+{
+    $etime = time() - $ptime;
+
+    if ($etime < 1)
+    {
+        return '0 seconds';
+    }
+
+    $a = array( 12 * 30 * 24 * 60 * 60  =>  'y',
+                30 * 24 * 60 * 60       =>  'month',
+                24 * 60 * 60 * 7        =>  'wk',
+                24 * 60 * 60            =>  'd',
+                60 * 60                 =>  'h',
+                60                      =>  'min',
+                1                       =>  's'
+                );
+
+    foreach ($a as $secs => $str)
+    {
+        $d = $etime / $secs;
+        if ($d >= 1)
+        {
+            $r = round($d);
+            return $r . ' ' . $str . ' ago';
+        }
+    }
+}
 
     if(isset($_SESSION['vine_userid'])||isset($_SESSION['access_token'])||isset($_SESSION['instagram'])||isset($user_id))
     {
@@ -16,7 +44,9 @@ include 'vinelibs/vine.php';
    // echo "<button type='button' class='loadMoreFeed'>Request data</button>";
     echo "<script>$(document).ready(function(){
       $('#pic1').hide();
+       $('#background').css( 'display', 'block');
       $('.brandon').show();
+
       // get array of elements
       var myArray = $('.brandon > div');
       var count = 0;
@@ -38,8 +68,11 @@ include 'vinelibs/vine.php';
           }
       });
       // put sorted results back on page
-      $('.mainContainer').append(myArray);
-      });</script>";
+      $('.brandon').append(myArray);
+      });
+  /*$(document).ready(function() {
+      $('section').stickem();
+    });*/</script>";
   }else{
     echo "<div class='pleaseLogIn'>Please Log into one of your Social accounts!</div>";
    echo "<script>$(document).ready(function(){

@@ -1,36 +1,9 @@
 <?php 
-function time_elapsed_string($ptime)
-{
-    $etime = time() - $ptime;
 
-    if ($etime < 1)
-    {
-        return '0 seconds';
-    }
-
-    $a = array( 12 * 30 * 24 * 60 * 60  =>  'year',
-                30 * 24 * 60 * 60       =>  'month',
-                24 * 60 * 60 * 7        =>  'week',
-                24 * 60 * 60            =>  'day',
-                60 * 60                 =>  'hour',
-                60                      =>  'minute',
-                1                       =>  'second'
-                );
-
-    foreach ($a as $secs => $str)
-    {
-        $d = $etime / $secs;
-        if ($d >= 1)
-        {
-            $r = round($d);
-            return $r . ' ' . $str . ($r > 1 ? 's' : '') . ' ago';
-        }
-    }
-}
 if (isset ($_SESSION['vine_key']) && isset($_SESSION['vine_userid'])){
 
 foreach($records['data']['records'] as $vines){
-  if(isset($vines['repost']['username']))
+  if(isset($vines['repost']['username']) && isset($vines['repost']['created']))
   {
   $poster_if_revined = $vines['repost']['username'];
   }
@@ -46,26 +19,24 @@ $time = strtotime($vines['created']);
 $the_time = time_elapsed_string(strtotime($vines['created']));
  #####START TO PRINT STUFF OUT HERE ###### 
           echo "<div timestamp='$time'>";
-echo "<div class='vinepost' data='$postId'>";
+echo "<div class='vinepost' data='$postId'><div class='vineHeader'>";
 if(isset($poster_if_revined)){
   echo "<span class='revined'>" . $poster_if_revined . " revined</span>";
    echo "<br/>";
-   $time = strtotime($vines['repost']['created']);
 }
 
 echo "<img src='$original_poster_avatar' class='vineAvatar' height = 50px width = 50px> ";
 echo "<span class='vineUsername'>" . $original_poster_username . "</span>"; 
 echo "<span class='vineTime'>" . $the_time . "</span>";
-echo "<br/>";
+echo "</div>";
 $video = $vines['videoUrl'];
                                
-echo "<video style='margin: 1% 0% 1% 0%;' poster='$video_thumb' width='420px' preload='none' height='420' controls loop>
+echo "<div class='vineVideo'><video style='margin: 1% 0% 1% 0%;' poster='$video_thumb' preload='none' controls loop>
 <source src='$video'>
-<object data='$video' width='420' height='420'></object>
-</video>";
-echo "<br/>";
-echo $description;
-echo "<br/>";
+<object data='$video'></object>
+</video></div>";
+echo "<div class='vineMessage'><h4>" . $description;
+echo "</h4></div><div class='vineStats'>";
 if(!empty($likes)){
       $num_likes = (int)str_replace(' ', '', $likes);
       if($num_likes > 1){
@@ -90,9 +61,9 @@ if(!empty($num_comments)){
     echo $num_comments . ' Comment';
   }
 }
-    echo "<br/>";
-    echo "<button type='button' class='ajaxcommentbutton1' group='$postId' data='2'>Load previous comments</button>";
-    echo "<br/>";
+    echo "</div><div class='vineCommentButton'>";
+    echo "<button type='button' class='ajaxcommentbutton1 round' group='$postId' data='2'>Load previous comments</button>";
+    echo "</div>";
     echo "<div class='commentsContainer'>";
     echo "<div class='1'>";
      $vineI=0;
@@ -111,7 +82,7 @@ if(!empty($num_comments)){
     }
     //var_dump($records['data']['records']);
 
-    echo "</div></div></div><hr></div>";
+    echo "</div></div></div></div>";
 }
 
 }#End If isset

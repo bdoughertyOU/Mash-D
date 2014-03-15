@@ -6,18 +6,17 @@ $self_origin_post = $facebook->api($self_post_url,'GET');
   echo "<br/>";
                if (isset($self_origin_post['to'])){
                    echo " to " . $self_origin_post['to']['data']['0']['name'];
+                   echo "<br/>";
                 }     
       ############
       ###########  PRINTS THE MESSAGE OF THE POST IF ANY        
-                echo "<br/>";
                 if (isset($self_origin_post['message'])){
                     echo $self_origin_post['message'];
+                    echo "<br/>";
                   }
                 if(!empty($self_origin_post['likes'])){
-                echo "<br/>";
-                $likes_count1 = count($origin_post['likes']['data']);
+                $likes_count1 = count($self_origin_post['likes']['data']);
                 echo "Likes: " . $likes_count1;
-                echo "<br/>";
                /* $x=0;
                 $likes_count1 = count($self_origin_post['likes']['data']);
                 while($x < $likes_count1){
@@ -64,6 +63,5 @@ $self_origin_post = $facebook->api($self_post_url,'GET');
                 }
       ############
       ###########   END PRINTS THE YOUTUBE VIDEO, OR A DIRECTLY UPLOADED VIDEO, OR PICTURE   
-        echo "<br/>";
-var_dump($self_origin_post);
+//var_dump($self_origin_post);
 ?>

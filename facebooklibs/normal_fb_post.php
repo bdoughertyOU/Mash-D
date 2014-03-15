@@ -1,7 +1,4 @@
 <?php
-	if(isset($data['application']['name']) === 'Instagram' && !isset($data['picture'])){
-			echo "this user liked an instagram post ,need to work on this";
-	}else{
 echo $data['from']['name'];
                 if (isset($data['to'])){
               echo " to " . $data['to']['data']['0']['name'];
@@ -51,11 +48,11 @@ echo $data['from']['name'];
           </html>
           </iframe>";
 
-        }elseif ((isset($data['source'])) && (preg_match("/\.3g2|\.3gp|\.gpp|\.asf|\.avi|\.dat|\.divx|\.dv|\.f4v|\.flv|\.m2ts|\.m4v|\.mkv|\.mod|\.mov|\.mp4|\.mpe|\.mpeg|\.mpeg4|\.mpg|\.mts|\.nsv|\.ogm|\.ogv|\.qt|\.tod|\.ts|\.vob|\.wmv/",$data['source']))){
+        }elseif ((isset($data['source'])) && (preg_match("/.3g2|.mp4|.3gp|.gpp|.asf|.avi|.dat|.divx|.dv|.f4v|.flv|.m2ts|.m4v|.mkv|.mod|.mov|.mp4|.mpe|.mpeg|.mpeg4|.mpg|.mts|.nsv|.ogm|.ogv|.qt|.tod|.ts|.vob|.wmv/",$data['source']))){
           $video_up = $data['source'];
-          echo "<video width='320' height='240' controls >
+          echo "<video controls >
             <source src='$video_up' type='video/mp4'/>
-            <object data='$video_up' width='320' height='240'></object>
+            <object data='$video_up'></object>
           </video>";
 
         }elseif(isset($data['picture']) && preg_match('/fbexternal/', $data['picture'])){
@@ -91,5 +88,5 @@ echo $data['from']['name'];
             echo "<img src='$imglink' width='400px'/>";
           }
         }
-         }#end else for if instagram condition
+         
 ?>

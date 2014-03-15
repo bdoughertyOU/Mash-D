@@ -3,24 +3,19 @@
 
 	INSTAGRAM
 
-	-Time ago post was published, need to make function that says if below an hour ago use mintes if more than an hour use hours
-	-comments ajax is hard coded to one post id make this dynamic
 	-ability to like
 	-ability to comment
-	
+	-# of comments
 
 	FACEBOOK
 
-	-time ago was posted
 	-comments
 	-only showing 25 comments max right now, need to find out how to get all.
 	-ability to like
 	-ability to comment
-	-take out instagram posts because they are a whole other beast to tackle.
 
 	TWITTER
 	
-	-time ago
 	-reverse comments, they are printing out backward oldest is currently on the bottom, should be on top
 	-when user expands comments delete expand and replace with collapse, just like twitter
 	-ability to like

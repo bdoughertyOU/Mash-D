@@ -30,7 +30,6 @@ $content = $connection->get('account/verify_credentials');
 //$connection->post('statuses/destroy', array('id' => 5437877770));
 //$connection->post('friendships/create', array('id' => 9436992));
 //$connection->post('friendships/destroy', array('id' => 9436992));
-$content = '<a href="twitterlibs/redirect.php"><img src="twitterlibs/images/lighter.png" alt="Sign in with Twitter"/></a>';
 /* Include HTML to display on the page */
 ?>
 
